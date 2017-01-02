@@ -102,7 +102,7 @@ class Fahrzeug extends CI_Controller{
     public function speicher() {
     	$data = $this->input->post();
 //		p($data);
-//		die;
+////		die;
 		$fahrzeug['fzh_id'] = $data['fzh_id'];
 		$fahrzeug['fahrzeugname'] = trim($data['fahrzeugname']);
 		$fahrzeug['bilder'] = $data['bilder'];
@@ -503,10 +503,11 @@ public function f_list_fa() {
     if($this->input->post()) {
 			
     	$data = $this->input->post();
-    	p($data);die;
+    	p($data);
+//  	die;
     	
 		$fahrzeug['fz_id'] = $fz_id = $this->uri->segment(3);
-		$fahrzeug['bilder'] = $data['alt_bilder'];	
+		$fahrzeug['bilder'] = $data['bilder'];	
 		$fahrzeug['fzh_id'] = $data['fzh_id'];
 		$fahrzeug['fahrzeugname'] = trim($data['fahrzeugname']);
 
@@ -631,6 +632,8 @@ public function f_list_fa() {
             // // p($data['hersteller']);die;
             $data["klasse"] = $this->k->k_select();
        p($data['update']);
+       p($data['klasse']);
+       
 //     die;
             $this->load->view("fahrzeug/edit",$data);
         }

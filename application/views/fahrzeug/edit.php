@@ -27,7 +27,7 @@
 
 <div id="search">
 <h1>Auto</h1>
-    <form class="form-inline" action="<?php echo site_url('fahrzeug/speicher') ?>" method="post"  enctype="multipart/form-data">
+    <form class="form-inline" action="<?php echo site_url('fahrzeug/edit/'.$update['fahrzeug'][0]['fz_id']); ?>" method="post"  enctype="multipart/form-data">
     <input type="hidden" name="eingabe" value="<?php echo date("Y-m-d"); ?>">
     <input type="hidden" name="aenderung" value="<?php echo date("Y-m-d"); ?>">
 <br>
@@ -86,16 +86,19 @@
             <div class="col-xs-7">
             	
             	
-            	<input type="text" class="form-control " value="<?php echo $update['fahrzeug'][0]['klasse'] ?>" list="klassefilter" name="fzk_id" required id="klasse_select">
-                	<datalist id="klassefilter">
-                    	<?php foreach($klasse as $value): ?>
-	                    	<option value="<?php echo $value["klasse"]; ?>">   
-	                        
-	                    	</option>
-                		<?php endforeach; ?>
-                    	 
-	                </datalist>
-	                
+            	
+	            <select class="form-control" id="klasse_select" name="fzk_id">
+                <?php foreach($klasse as $value): ?>
+                    
+                    <option value="<?php echo $value['fzk_id'] ?>" 
+                    	<?php if($value['fzk_id']==$update['fahrzeug'][0]['fzk_id']): ?> 
+                    		selected
+                    	<?php endif;?>	>   
+                        <span><?php echo $value["klasse"] ?></span>
+                    </option>
+                    
+                <?php endforeach; ?>
+            </select>    
             
             
             </div>
@@ -119,15 +122,16 @@
                 <label for="hersteller_select"><span>Hersteller</span></label>
             </div>
             <div class="col-xs-7">
-            	<input type="text" class="form-control " value="<?php echo $update['fahrzeug'][0]['herstellername'] ?>" list="herstellerfilter" name="fzk_id" required id="hersteller_select">
-                	<datalist id="herstellerfilter">
-                    	<?php foreach($hersteller as $value): ?>
-	                    	<option value="<?php echo $value["herstellername"]; ?>">   
-	                        
-	                    	</option>
-                		<?php endforeach; ?>
-                    	 
-	                </datalist>
+            	<select class="form-control" id="fzh" name="fzh_id">
+                    <?php foreach($hersteller as $value): ?>
+                        <option value="<?php echo $value['fzh_id']; ?>"
+                        	<?php if($value['fzh_id']==$update['fahrzeug'][0]['fzh_id']): ?> 
+                    			selected
+                    		<?php endif;?> >
+                            <span><?php echo $value['herstellername']; ?></span>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
                 
             </div>
             <div class="col-xs-3">
@@ -265,7 +269,7 @@
         <div class="row quelle markt_quelle">
         	<?php foreach($update['markt'] as $key => $value): ?>
 			<div class='out'><div class='col-xs-2'>
-				<input type='hidden' name='markt_id[]' value='"+index+"'>markt[<?php echo $key;?>]
+				<input type='hidden' name='markt_id[]' value="<?php echo $value['markt_id'] ?>">markt[<?php echo $key+1;?>]
 			</div>
 			<div class='col-xs-7'><?php echo $value['marktname']; ?></div>
 				<div class='col-xs-3'>
@@ -277,7 +281,12 @@
 				</div>
 			</div>
 			<?php endforeach; ?>
-			<span class="all_markt_index"><?php echo count($update['markt']); ?></span>
+			
+			
+			
+			<!--<span class="all_markt_index"><?php echo count($update['markt']); ?></span>-->
+			<input type="hidden" name="all_markt_index" value="<?php echo count($update['markt']); ?>"/>
+			
 		</div>  
 <script type="text/javascript">
 	function del(obj,s) {
@@ -292,8 +301,9 @@
 }
 
 var count = 0;
-var markt = $('.all_markt_index').val();	
-
+//var markt = $(':input').attr({"name":"all_markt_index"}).val();	
+markt = $("input[name='all_markt_index']").val();
+//alert("markt = "+markt);
 $(function() {
 	
 
@@ -364,7 +374,7 @@ $(function() {
 <div class="row quelle quelle_quelle">
 		<?php foreach($update['quelle'] as $key => $value): ?>
 			<div class='out'><div class='col-xs-2'>
-				<input type='hidden' name='quelle_id[]' value='"index"'>quelle[<?php echo $key+1;?>]
+				<input type='hidden' name='quelle_id[]' value="<?php echo $value['quelle_id']; ?>">quelle[<?php echo $key+1;?>]
 			</div>
 			<div class='col-xs-7'><?php echo $value['quellenname']; ?></div>
 				<div class='col-xs-3'>
@@ -377,20 +387,25 @@ $(function() {
 			</div>
 		<?php endforeach; ?>
 			
-		<span class="all_quelle_index"><?php echo count($update['quelle']); ?></span>
+		<!--<span class="all_quelle_index"><?php echo count($update['quelle']); ?></span>-->
+		<input type="hidden" name="all_quelle_index" value="<?php echo count($update['quelle']); ?>"/>
+
+		
+		
 </div>
 <br />
 <script>
 
-
+count = $("input[name='all_quelle_index']").val();
 $(function() {
 	
-	count = $(".all_quelle_index").val();
-	alert(count);
 	
+	 
+
+//	 alert("count = "+count);
     $(".qq_add").click(function(){
     	count++;
-    	alert(count);
+  
         var inner = $(this).parents('.quelle').children(".col-xs-7");
         var value = inner.find("select option:selected");
         var index = value.val();
@@ -455,7 +470,7 @@ $(function() {
 <div class="row quelle fas_quelle">
 	<?php foreach($update['fas'] as $key => $value): ?>
 			<div class='out'><div class='col-xs-2'>
-				<input type='hidden' name='fas_id[]' value='"+index+"'>fas[<?php echo $key;?>]
+				<input type='hidden' name='fas_id[]' value="<?php echo $value['fas_id'] ?>">fas[<?php echo $key+1;?>]
 			</div>
 			<div class='col-xs-7'><?php echo $value['fasbezeichnung']; ?></div>
 				<div class='col-xs-3'>
@@ -467,10 +482,15 @@ $(function() {
 				</div>
 			</div>
 			<?php endforeach; ?>
+				
+				<input type="hidden" name="all_fas_index" value="<?php echo count($update['fas']); ?>"/>
 </div>
 
 <script>
 var fasCou = 0;
+
+fasCou = $("input[name='all_fas_index']").val();
+//alert("fas="+fasCou);
     $(function() {
         $(".fas_add").click(function(){
             fasCou++;
