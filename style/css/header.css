@@ -1,0 +1,52 @@
+#logo{overflow:hidden;border-top: 0px solid black;background: white;width:100%;position: relative;}
+#logo a.second{position:relative; top: 10px;}
+#logo img.top{height: 74px;width:198px;margin-left: 5px;}
+#logo img.tu_logo{height: 74px;width:198px;margin-left: 5px;}
+#logo img.iff_logo{height:60px;width:172px;}
+#logo img.fahrzeug{margin-left: 1px;}
+/*#logo p.text{font-size: 25px;color: black;font-family: "Arial,Helvetica,sans-serif";height:45px;line-height: 45px;background-color: #DFE1DC;border-radius: 0 6px 0 0 ; top: 219px;margin-left: 1px;padding: 0px 10px;border: 1px solid white;}*/
+#logo img{height: 74px;width:198px;margin-left: 5px;}
+#logo ul.nav{font-size: 18px;
+list-style-type: none;
+margin: 0;
+padding: 0;
+overflow: hidden;
+background-color: #606060;
+height: 50px; font-size: 18px;}
+#logo ul.nav a.ul_nav{
+	display: inline-block;width: 120px;text-align: center;
+    font-size: 18px; font-family: "Arial,Helvetica,sans-serif";
+    color:white;line-height: 50px;height: 50px;
+    margin-left: -5px;
+    }
+/*#logo ul.nav a:first{background-color: black;}*/
+/*#logo ul.nav a:visited{background-color: black;}*/
+/*#logo ul.nav a:link{color: yellow;}
+#logo ul.nav a:visited{color: red;}*/
+/*#logo ul.nav a:hover {background-color: #4caf50;}*/
+/*#logo ul.nav a:active{color: black;}*/
+
+.title_line{background-color: #606060;color: white;white-space: nowrap;}
+.title_line a span{color: white;}
+
+
+form.filter{float: right;position: relative;top: -40px;margin-right: 30px;}
+form.filter button.filter_button:hover{background-color: rgb(76, 175, 80);color: white;}
+
+
+div.full_tag_style {position: relative;left: 13%;}
+
+div.full_tag_style p{display: inline-block; height: 30px;width: 40px;background-color: rgb(96,96,96);border: 2px solid white;color: white;
+font-size: 16px;line-height: 27px;text-align: center;margin-left: 4px;}
+div.full_tag_style p.cur_tag_style{background-color: #000000;font-weight: 700;position: relative;}
+div.full_tag_style p a{color: white;}
+div.full_tag_style p:hover{background: #4CAF50;font-weight: 700px;}
+div.zuseite{position: absolute;left:50%;top: 210px;}
+
+div.zuseite input.seite_num{margin: 0px 5px;display: inline-block;width: 50px;}
+
+
+
+
+
+

@@ -1,0 +1,60 @@
+.shadow {margin: 0 auto;}
+#search{background: white;margin:50px auto 0;width:80%;overflow: hidden;}
+
+#search form{margin: 5px;}
+/*#search form label{height: 40px;}*/
+#search form div.text input{width: 300px;}
+#search form select{width: 320px;}
+
+#search div.button input{width:70px;}
+
+
+
+
+
+
+
+
+
+/*klasse开始*/
+#klasse{margin: 0 auto;}
+#klasse input{width: 320px;}
+
+
+
+/*klasse结束*/
+
+
+
+#search .listcard1 {padding: 4px;
+font-size: 16px;
+/*width: 700px;*/
+text-align: center;
+background-color: #ddd;
+border-radius: 50px;
+box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+margin-top: 1px;}
+#search .listcard2 {padding: 4px;
+font-size: 16px;
+/*width: 700px;*/
+text-align: center;
+background-color: #B8B8B8;
+border-radius: 50px;
+box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+margin-top: 1px;}
+#search .listcard1 a.t:link, a.t:visited, a.t:active{
+	text-decoration: none;
+color: black;
+padding: 0;
+text-align: center;}
+#search .listcard1 a.t:hover{
+	color:rgb(0, 153, 0);
+}
+#search .listcard2 a.t:link, a.t:visited, a.t:active{
+	text-decoration: none;
+color: black;
+padding: 0;
+text-align: center;}
+#search .listcard2 a.t:hover{
+	color:rgb(0, 153, 0);
+}

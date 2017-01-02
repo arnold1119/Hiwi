@@ -1,0 +1,9 @@
+[core]
+	bare = true
+	repositoryformatversion = 0
+	filemode = false
+	symlinks = false
+	ignorecase = true
+[remote "hiwi"]
+	url = https://github.com/arnold1119/Hiwi.git
+	fetch = +refs/heads/*:refs/remotes/hiwi/*
