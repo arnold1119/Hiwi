@@ -5,11 +5,12 @@
     <title>Document</title>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 <?php echo  $this->load->view("header"); ?>
-<div id="hersteller" class="w900">
+<div id="search" class="w900">
+	<h4>Update Bilder</h4>
 <br>
 <form action="<?php echo site_url('bilder/edit/'.$result[0]['sb_id']); ?>" method="post">
 <table class="table table-striped">
-    <tr class="warning">
+    <tr class="active">
     <td> <h5><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></h5></td>
     <td><h5>Zeigen Alle Bilder Quelle </h5></td>
     <td>
@@ -64,7 +65,7 @@
 
     </div>
     <div class="col-xs-2">
-        <input type="submit" value="update" name="update" />
+        <input type="submit" value="update" name="update" class="btn btn-default"/>
     </div>
 </div>
 

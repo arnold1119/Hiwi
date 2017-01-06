@@ -5,12 +5,13 @@
     <title>Document</title>
 <?php $this->load->view("header"); ?>
 <div id="search" class="w900">
+	<h4>Sensor Merkmal Type</h4>
 <br>
 <table class="table table-striped">
-<tr class="active">
-    <td> <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></td>
-    <td>Add new Sensor Merkmal Type </td>
-    <td>
+<tr class="row active">
+    <td class="col-xs-3"> <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></td>
+    <td class="col-xs-7"> Add new Sensor Merkmal Type </td>
+    <td class="col-xs-2"> 
         <a href="<?php echo site_url('sensor/merkmal_type_insert'); ?>">
             <!-- <button type="btn">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
@@ -24,8 +25,8 @@
 
 <?php foreach($merkmaltype as $value): ?>
     <?php if($value['smt_id'] == $t_index): ?>
-    <tr class="active"> 
-        <td>
+    <tr class="row active"> 
+        <td class="col-xs-3">
             <span><?php echo $value['smt_id']; ?></span>
           
             <span class="glyphicon glyphicon-saved" aria-hidden="true" style="color:green">
@@ -34,16 +35,16 @@
 			
         </td>
 <?php else: ?>
-    <tr class="class_out">
-        <td><span><?php echo $value['smt_id']; ?></span></td>
+    <tr class="row class_out">
+        <td class="col-xs-3"><span><?php echo $value['smt_id']; ?></span></td>
 <?php endif; ?>
 
-        <td><span><?php echo $value['merkmalstyp']; ?></span></td>
+        <td class="col-xs-7"><span><?php echo $value['merkmalstyp']; ?></span></td>
 
             
 
 
-        <td>
+        <td class="col-xs-2">
 <?php if($value['smt_id']!=0): ?>
             <a href="<?php echo site_url('sensor/merkmal_type_edit/'.$value['smt_id']) ?>">
                 <!-- <button type="btn">

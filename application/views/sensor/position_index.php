@@ -5,7 +5,7 @@
     <title>Document</title>
 <?php $this->load->view("header"); ?>
 <div id="search" class="w900">
-
+<h4>Sensor Position</h4>
 <br>
 <table class="table table-striped">
 <tr class="active">

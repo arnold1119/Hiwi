@@ -8,6 +8,7 @@ class Quelle extends CI_Controller{
     public function __construct(){
         parent::__construct();
         $this->load->model("quelle_model","quelle");
+        $this->load->model("bilder_model",'bilder');
     }
 
     public function index() {
@@ -36,7 +37,8 @@ class Quelle extends CI_Controller{
     //    如果不是点击post按钮的话 那就显示要做的内容
     //    
             if($this->input->post("add")) {
-               
+//             p($this->input->post());
+//             die;
                 $link = $this->input->post('link');
                 $quellenname = $this->input->post("quellenname");
                 $datum = $this->input->post("datum");
@@ -47,16 +49,42 @@ class Quelle extends CI_Controller{
                     );
                 $index = $this->quelle->q_insert($array);
 //				p($index);die;
-                if($index) {
-                    success("quelle/index/$index","Add Quelle Success!!");
-                } else{
-                    error("insert feler");
-                }
+				if($index != "Daten schon eixts") {
+					if($index) {
+	                	$this->bilder->Session_file_null();
+	                	$this->bilder->Session_vorfile_null();
+	                    success("quelle/index/$index","Add Quelle Success!!");
+	                } else{
+	                    error("insert feler");
+	                }
+				} else{
+					error($index);
+				}
+                
                 
                 
                 
             } else{
-                $this->load->view("quelle/insert");
+            	
+		$file = $this->bilder->Session_get_file()[0];
+            	
+	        if($file['session_value'] != 'null') {
+				$link = $file['session_value'];
+				$data['file_status'] = 1;
+	//			$data['info'] = pathinfo($link);
+	//			$result = preg_split("/www/",$link);
+	//			p($link);
+	//			p($result);
+		      	$data['session_value'] = $file['session_value'];
+		        $data['result'] = $link;
+//		        p($data['session_value']);
+			} else{
+				$data['file_status'] = 0;
+				
+			}
+            	
+            	$data['url'] = uri_string();
+                $this->load->view("quelle/insert",$data);
             }
             // $this->load->view("hersteller/insert");
         }
@@ -85,13 +113,21 @@ class Quelle extends CI_Controller{
                 
                 // p($_POST);die;
             } else{
+            	
+            	
+//				$data['sessions'] = $this->bilder->Session_all();
+            	$data['url'] = uri_string();
+//          	$quelle_id = preg_split('/edit\//',$data['url'])[1];
+            	
                 $quelle_id = $this->uri->segment(3);
+//              p($quelle_id);
                 $array = array(
                     'quelle_id' => $quelle_id,
                     );
+                    
+//                  p($array);
                 $data['result'] = $this->quelle->qbindung_s($array);
-                // p($data);die;
-                // p($data);die;
+//              p($data['result']);die;
                 $this->load->view("quelle/edit",$data);
             }
         }

@@ -17,14 +17,23 @@ class Quelle_model extends CI_Model{
     public function q_update($array,$index) {
         return $this->db->update("Quelle",$array,array('quelle_id'=>$index));
     }
-
-
+	public function q_exits($array) {
+		return $this->db->where($array)->get("Quelle")->result_array();
+	}
+	
     public function q_insert($array) {
-        if($this->db->insert("Quelle",$array)) {
-            return $this->db->insert_id();
-        } else{
-            return FALSE;
-        }
+    	$flame = $this->q_exits($array);
+    	if(!count($flame)) {
+    		if($this->db->insert("Quelle",$array)) {
+        	
+	            return $this->db->insert_id();
+	        } else{
+	            return FALSE;
+	        }
+    	} else{
+    		return "Daten schon eixts";
+    	}
+        
     }
     public function fahrzeug_quelle_exits($data) {
         return $this->db->where($data)->get("Fahrzeug2Quelle")->result_array();
@@ -97,6 +106,14 @@ class Quelle_model extends CI_Model{
 			return true;
 		}
 		//$tt = $this->db->update("Fahrzeug",$array,array('fzk_id'=>$fzk_id));
+	}
+	
+	public function quellenname_null_set($quelle_id) {
+		$array = array(
+			'quellenname' => "null",
+		);
+	
+        $this->db->update("Quelle",$array,array("quelle_id"=>$quelle_id));
 	}
 
 	

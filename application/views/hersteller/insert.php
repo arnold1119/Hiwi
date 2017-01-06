@@ -38,11 +38,12 @@
         <option value="<?php echo $value['fahrzeugname']; ?>"></option>
     <?php endforeach; ?>
 </datalist>
-<div id="klasse"  class="w80">
+<div id="search"  class="w80">
+	<h4>Add neue Hersteller</h4>
 <br>
 <form action="<?php echo site_url('hersteller/insert/'); ?>" method="post">
 <table class="table table-striped">
-    <tr class="warning">
+    <tr class="active">
     <td> <h5><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></h5></td>
     <td><h5>Zeigen Alle Hersteller </h5></td>
     <td>
@@ -58,10 +59,11 @@
     </td>
     </tr>
 
-    <tr class="success">
-        <td> <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></td>
-        <td>HerstellerLand List</td>
-        <td>
+  
+    <tr class=""row text"">
+        <td class="col-xs-3"> <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></td>
+        <td class="col-xs-7">HerstellerLand List</td>
+        <td class="col-xs-1">
             <a href="<?php echo site_url('Land/index'); ?>">
                 <!-- <button type="btn">
                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
@@ -76,7 +78,7 @@
 
 
 <hr>
-<h4 style="text-align: center">Add new Hersteller</h4>
+
 <div class="row text">
     <div class="col-xs-3">
         <label for="fahrzeugname"><span>fahrzueghersteller_gruppe</span></label>
@@ -90,7 +92,7 @@
             <?php endforeach; ?>
         </select>
     </div>
-    <div class="col-xs-2">
+    <div class="col-xs-1">
     
     </div>
 </div>
@@ -129,8 +131,8 @@
             <option>5</option>
         </select> -->
     </div>
-    <div class="col-xs-2">
-        <input type="submit" value="add" name="add" />
+    <div class="col-xs-1">
+        <input type="submit" value="add" name="add"  style="width: 70px;"/>
     </div>
 </div>
 

@@ -4,10 +4,11 @@
     <meta charset="UTF-8" />
     <title>Document</title>
 <?php $this->load->view("header"); ?>
-<div id="klasse" class="w900">
+<div id="search" class="w900">
+	<h4>Bilder</h4>
 <br>
 <table class="table table-striped">
-<tr class="info">
+<tr class="active">
     <td> <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></td>
     <td>Add new Bilder </td>
     <td>&nbsp;</td>
@@ -16,8 +17,8 @@
             <!-- <button type="btn">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
             </button> -->
-            <button type="button" class="btn btn-info">
-                <span class="glyphicon glyphicon-plus" aria-hidden="true" style="color:white"></span>
+            <button type="button" class="btn btn-default">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
             </button>
         </a>
     </td>

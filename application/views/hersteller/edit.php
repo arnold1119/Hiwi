@@ -38,11 +38,12 @@
         <option value="<?php echo $value['fahrzeugname']; ?>"></option>
     <?php endforeach; ?>
 </datalist>
-<div id="search" class="w900">
+<div id="search"  class="w80">
+	<h4>Update Hersteller</h4>
 <br>
 <form action="<?php echo site_url('hersteller/edit/'.$result[0]['fzh_id']); ?>" method="post">
     <table class="table table-striped">
-<tr class="warning">
+<tr class="active">
     <td> <h5><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></h5></td>
     <td><h5>Zeigen Alle Hersteller </h5></td>
     <td>
@@ -57,10 +58,11 @@
         </a>
     </td>
 </tr>
-<tr class="success">
-    <td> <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></td>
-    <td>HerstellerLand List</td>
-    <td>
+ 
+<tr class=""row text"">
+        <td class="col-xs-3"> <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></td>
+        <td class="col-xs-7">HerstellerLand List</td>
+        <td class="col-xs-1">
         <a href="<?php echo site_url('land/index'); ?>">
             <!-- <button type="btn">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
@@ -91,7 +93,7 @@
             <?php endforeach; ?>
         </select>
     </div>
-    <div class="col-xs-2">
+    <div class="col-xs-1">
     
     </div>
 </div>
@@ -115,7 +117,7 @@
             <?php endforeach; ?>
         </select>
     </div>
-    <div class="col-xs-2">
+    <div class="col-xs-1">
         <a href="<?php echo site_url('land/index'); ?>">
                     <!-- <button type="btn">
                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>

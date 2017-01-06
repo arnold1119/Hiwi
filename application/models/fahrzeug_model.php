@@ -288,5 +288,29 @@ public function bind_table_id_d() {
 		}
 		return $data["message"] = "error";
 	}
+	
+	public function bilder_null_set($fz_id) {
+		$array = array(
+			'bilder' => "null",
+		);
+	
+        $this->db->update("Fahrzeug",$array,array("fz_id"=>$fz_id));
+	}
+	
+	public function fahrzeug_bilder_set($bilder) {
+		$array = array(
+			'bilder' => $bilder['bilder'],
+		);
+	
+        $this->db->update("Fahrzeug",$array,array("fz_id"=>$bilder['fz_id']));
+	}
+	
+	public function fahrzeug_bilder_get($fz_id) {
+		return $this->db->get_where("Fahrzeug",array("fz_id"=>$fz_id))->result_array();
+	}
+	
+	
+	
+	
 
 }

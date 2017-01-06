@@ -6,6 +6,8 @@
 
 <?php echo  $this->load->view("header"); ?>
 <div id="search" class="w900">
+	<h4>Update Sensor Einheit</h4>
+	
 <br>
 <form action="<?php echo site_url('sensor/einheit_edit/'.$result[0]['sme_id']); ?>" method="post">
 

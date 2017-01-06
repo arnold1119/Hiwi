@@ -1,17 +1,19 @@
-<!DOCTYPE html>
+<?php
+
+?><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
     <title>Document</title>
 <?php $this->load->view("header"); ?>
 <div id="search" class="w900">
-<h4>Bilder auf dem Server auswählen</h4>
+<h4>Dokument auf dem Server auswählen</h4>
 <br>	
 <table class="table table-striped">
 <tr class="active">
     <td> <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></td>
-    <td>Hochladen neue Bilder </td>
-    <form action="<?php echo site_url('bilder/bilder_upload'); ?>" method="post"  enctype="multipart/form-data">
+    <td>Hochladen neues Dokument </td>
+    <form action="<?php echo site_url('bilder/file_upload'); ?>" method="post"  enctype="multipart/form-data">
 
             <td>
             	

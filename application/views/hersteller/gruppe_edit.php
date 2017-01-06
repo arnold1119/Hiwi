@@ -37,7 +37,8 @@
     <?php endforeach; ?>
 </datalist>
 
-<div id="klasse" class="w80">
+<div id="search"  class="w80">
+	<h4>Update HerstellerLand Gruppe Name</h4>
 <br>
 <form action="<?php echo site_url('hersteller/gruppe_edit/'.$result[0]['fzhg_id']); ?>" method="post">
 
@@ -60,7 +61,7 @@
 
 
 
-        <tr class="danger">
+        <tr class="">
             <td>    
                 <span>Gruppe_id&nbsp;&nbsp;<?php echo $result[0]['fzhg_id']; ?></span>
             </td>
@@ -68,7 +69,7 @@
                 <input type="text" name="klasse" autofocus value="<?php echo $result[0]['gruppenname'] ?>" />
             </td>
             <td>
-                <input type="submit" value="edit" class="btn btn-danger"  style="width: 80px;"
+                <input type="submit" value="edit" class="btn btn-default"
                 name="edit"/>
             </td>
         </tr>

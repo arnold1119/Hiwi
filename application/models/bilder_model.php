@@ -87,15 +87,83 @@ class Bilder_model extends CI_Model{
     	return $this->db->update("Session",$array,array('session_name'=>'bilder'));
     }
     
+    
     public function Session_get_bilder() {
     	$array['session_name'] = 'bilder';
     	return $this->db->get_where("Session",$array)->result_array();
     }
+    public function Session_get_vorbilder() {
+    	$array['session_name'] = 'vorbilder';
+    	return $this->db->get_where("Session",$array)->result_array();
+    }
+    
     
     public function Session_bilder_null() {
     	$array['session_value'] = 'null';
     	return $this->db->update("Session",$array,array('session_name'=>'bilder'));
     }
+    public function Session_vorbilder_null() {
+    	$array['session_value'] = 'null';
+    	return $this->db->update("Session",$array,array('session_name'=>'vorbilder'));
+    }
+    
+    public function vorbilder_set($vorbilder) {
+    	$array = array(
+    		"session_value" => $vorbilder,
+    	);
+    	$this->db->update("Session",$array,array('session_name'=>'vorbilder'));
+    }
+    
+    public function Session_all() {
+    	return $this->db->get("Session")->result_array();
+    }
+    
+    public function Session_file_update($array) {
+    	return $this->db->update("Session",$array,array('session_name'=>'file'));
+    }
+    public function Session_get_file() {
+    	$array['session_name'] = 'file';
+    	return $this->db->get_where("Session",$array)->result_array();
+    }
+    public function Session_file_null() {
+    	$array['session_value'] = 'null';
+    	return $this->db->update("Session",$array,array('session_name'=>'file'));
+    }
+    public function Session_vorfile_null() {
+    	$array['session_value'] = 'null';
+    	return $this->db->update("Session",$array,array('session_name'=>'vorfile'));
+    }
+    
+    public function vorfile_set($vorfile) {
+    	$array = array(
+    		"session_value" => $vorfile,
+    	);
+    	$this->db->update("Session",$array,array('session_name'=>'vorfile'));
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
 
 

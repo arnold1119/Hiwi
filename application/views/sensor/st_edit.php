@@ -5,15 +5,17 @@
     <title>Document</title>
 
 <?php echo  $this->load->view("header"); ?>
-<div id="klasse" class="w900">
+<div id="search" class="w900">
+	<h4>Update Sensor Type</h4>
+	
 <br>
 <form action="<?php echo site_url('sensor/typeedit/'.$result[0]['st_id']); ?>" method="post">
 
     <table class="table table-striped">
-<tr>
-    <td> <h5><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></h5></td>
-    <td><h5>Zeigen Alle Sensor Type </h5></td>
-    <td>
+<tr class="row">
+    <td class="col-xs-3"> <h5><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></h5></td>
+    <td class="col-xs-7"><h5>Zeigen Alle Sensor Type </h5></td>
+    <td class="col-xs-2">
         <a href="<?php echo site_url('sensor/typeindex'); ?>">
                     <!-- <button type="btn">
                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
@@ -26,30 +28,30 @@
     </td>
 </tr>
 
-<tr class="info">
-    <td> <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></td>
-    <td>Add new Sensor Type </td>
-    <td>
+<tr class="row">
+    <td class="col-xs-3"> <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></td>
+    <td class="col-xs-7">Add new Sensor Type </td>
+    <td class="col-xs-2">
         <a href="<?php echo site_url('sensor/typeinsert'); ?>">
             <!-- <button type="btn">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
             </button> -->
-            <button type="button" class="btn btn-info">
-                <span class="glyphicon glyphicon-plus" aria-hidden="true" style="color:white"></span>
+            <button type="button" class="btn btn-default">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true" ></span>
             </button>
         </a>
     </td>
 </tr>
 
-        <tr class="danger">
-            <td>    
+        <tr class="row active">
+            <td class="col-xs-3">  
                 <span>st_id&nbsp;&nbsp;<?php echo $result[0]['st_id']; ?></span>
             </td>
-            <td>
+            <td class="col-xs-7">
                 <input type="text" name="sensortyp" autofocus value="<?php echo $result[0]['sensortyp'] ?>" />
             </td>
-            <td>
-                <input type="submit" value="edit" class="btn btn-danger"  style="width: 80px;"
+            <td class="col-xs-2">
+                <input type="submit" value="edit" class="btn btn-default"  
                 name="edit"/>
             </td>
         </tr>

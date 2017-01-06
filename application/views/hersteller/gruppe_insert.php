@@ -5,7 +5,8 @@
     <title>Add neues HerstellerLand_gruppe Name</title>
 
 <?php echo  $this->load->view("header"); ?>
-<div id="klasse"   class="w80">
+<div id="search"  class="w80">
+	<h4>Add neue HerstellerLand Grupp Name</h4>
 <br>
 <form action="<?php site_url('hersteller/gruppe_insert') ?>" method="post">
     <table class="table table-striped">

@@ -184,33 +184,88 @@
         <span></span>
     </div>
     <div class="col-xs-7">
-        <a href="<?php echo site_url('bilder/auswahlen'); ?>">
-            <!-- <button type="btn">
-                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-            </button> -->
-            <button type="button" class="btn btn-default">
-                auf dem Server auswählen
-            </button>
-             
-        </a>
-    <?php if($update['fahrzeug'][0]['bilder'] != 'null'):?>
-        <span class="session_hidden"><?php echo $update['fahrzeug'][0]['bilder']; ?></span>
-        <img src="<?php echo '/quellen/Bilder/'.$update['fahrzeug'][0]['bilder']; ?>" alt="" style="height: 50px;" class="session_hidden"/>
-        <input type="hidden" name="bilder" value="<?php echo $update['fahrzeug'][0]['bilder']; ?>"/>
-    <?php else: ?>
-    	<input type="hidden" name="bilder" value="null"/>
     	
-    <?php endif; ?>
-    	
-    	<!--<button type="button" class="btn btn-default" onclick="bilder_del(this)">
-    		<span class="glyphicon glyphicon-remove"></span>
-             	Keine Bilder
-        </button>-->
+	    <?php if($update['fahrzeug'][0]['bilder'] != 'null'):?>
+	        <a href="<?php echo site_url('bilder/auswahlen?bilder='.$update['fahrzeug'][0]['bilder'].'&fz_id='.$update['fahrzeug'][0]['fz_id'].'&u='.$url); ?>">
+	            <!-- <button type="btn">
+	                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+	            </button> -->
+	            <button type="button" class="btn btn-default">
+	                auf dem Server auswählen
+	            </button>
+	             
+	        </a>
+	    
+	        <span class="session_hidden"><?php echo $update['fahrzeug'][0]['bilder']; ?></span>
+	        <img src="<?php echo '/quellen/Bilder/'.$update['fahrzeug'][0]['bilder']; ?>" alt="" style="height: 50px;" class="session_hidden"/>
+	        <input type="hidden" name="bilder" value="<?php echo $update['fahrzeug'][0]['bilder']; ?>"/>
+	    <?php elseif($sessions[0]['session_value'] != 'null'): ?>
+	    	<a href="<?php echo site_url('bilder/auswahlen?u='.$url); ?>">
+	            <!-- <button type="btn">
+	                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+	            </button> -->
+	            <button type="button" class="btn btn-default">
+	                auf dem Server auswählen
+	            </button>
+	             
+	        </a>
+	    
+	        <span class="session_hidden"><?php echo $sessions[0]['session_value']; ?></span>
+	        <img src="<?php echo '/quellen/Bilder/'.$sessions[0]['session_value']; ?>" alt="" style="height: 50px;" class="session_hidden"/>
+	        <input type="hidden" name="bilder" value="<?php echo $sessions[0]['session_value']; ?>"/>
+	    	
+	    	
+	    	
+	    	
+	   	<?php else: ?>
+	   		
+	   		<a href="<?php echo site_url('bilder/auswahlen?u='.$url); ?>">
+	            <!-- <button type="btn">
+	                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+	            </button> -->
+	            <button type="button" class="btn btn-default">
+	                auf dem Server auswählen
+	            </button>
+	             
+	        </a>
+<!--<a href="<?php echo site_url('bilder/auswahlen'); ?>">
+    <!-- <button type="btn">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+    </button> -->
+    <!--<button type="button" class="btn btn-default">
+        auf dem Server auswählen
+    </button>
+     
+</a>
 
-    </div>
+<span class="session_hidden"><?php echo $sessions[3]['session_value']; ?></span>
+<img src="<?php echo '/quellen/Bilder/'.$sessions[3]['session_value']; ?>" alt="" style="height: 50px;" class="session_hidden"/>
+<input type="hidden" name="bilder" value="<?php echo $sessions[3]['session_value']; ?>"/>-->
+	        
+	    	
+	    <?php endif; ?>
+    	
+    </div>	
+       	
+
+    	
+
+    
     
     <div class="col-xs-3">
-    
+    	<a href="<?php echo site_url('bilder/mysql_delete?fz_id='.$update['fahrzeug'][0]['fz_id']);?>">
+    		<button type="button" class="btn btn-default">
+	    		<span class="glyphicon glyphicon-remove"></span>	
+	       	</button>
+    	</a>
+    	<a href="<?php echo site_url('bilder/reset?fz_id='.$update['fahrzeug'][0]['fz_id']);?>">
+    		<button type="button" class="btn btn-default btn-sm">
+	    		<span>reset</span>
+	       	</button>
+    	</a>
+    	
+    	
+		
     </div>
 
 </div>

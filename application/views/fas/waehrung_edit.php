@@ -6,14 +6,15 @@
 
 <?php echo  $this->load->view("header"); ?>
 <div id="search" class="w900">
+<h4>Update FAS Waehrung</h4>	
 <br>
 <form action="<?php echo site_url('fas/waehrung_edit/'.$result[0]['w_id']); ?>" method="post">
 
     <table class="table table-striped">
-<tr>
-    <td> <h5><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></h5></td>
-    <td><h5>Zeigen Alle Waehrung Name </h5></td>
-    <td>
+<tr class="row">
+    <td class="col-xs-3"> <h5><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></h5></td>
+    <td class="col-xs-7"> <h5>Zeigen Alle Waehrung Name </h5></td>
+    <td class="col-xs-2"> 
         <a href="<?php echo site_url('fas/waehrung'); ?>">
                     <!-- <button type="btn">
                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
@@ -26,10 +27,10 @@
     </td>
 </tr>
 
-<tr class="active">
-    <td> <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></td>
-    <td>Add new FAS_Waehrung </td>
-    <td>
+<tr class="row active">
+    <td class="col-xs-3"> <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></td>
+    <td class="col-xs-7">Add new FAS_Waehrung </td>
+    <td class="col-xs-2">
         <a href="<?php echo site_url('fas/waehrung_insert'); ?>">
             <!-- <button type="btn">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
@@ -41,14 +42,14 @@
     </td>
 </tr>
 
-        <tr>
-            <td>    
+        <tr class="row">
+            <td class="col-xs-3">   
                 <span>w_id&nbsp;&nbsp;<?php echo $result[0]['w_id']; ?></span>
             </td>
-            <td>
+            <td class="col-xs-7">
                 <input type="text" name="waehrung" autofocus value="<?php echo $result[0]['waehrung'] ?>" />
             </td>
-            <td>
+            <td class="col-xs-2">
                 <input type="submit" value="edit" class="btn btn-default"  style="width: 80px;"
                 name="edit"/>
             </td>

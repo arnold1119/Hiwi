@@ -6,6 +6,8 @@
 
 <?php echo  $this->load->view("header"); ?>
 <div id="search" class="w900">
+	<h4>Add Sensor Merkmal Type</h4>
+	
 <br>
 <form action="<?php site_url('sensor/merkmal_type_insert') ?>" method="post">
     <table class="table table-striped">
@@ -32,32 +34,12 @@
                 <input type="text" name="merkmalstyp" placeholder="neue Merkmal Type" autofocus required/>
             </td>
             <td>
-                <input type="submit" value="add" class="btn btn-danger"  style="width: 80px;"
+                <input type="submit" value="add" class="btn btn-default"
                 name="add"/>
             </td>
         </tr>
 
-<?php foreach($merkmalstyp as $value): ?>
-    <?php if($count == $value['smt_id']): ?>
-        <tr class="success">
-    <?php else: ?>
-        <tr>
-    <?php endif; ?>
-    
-        <td><span><?php echo $value['smt_id']; ?></span></td>
-        <td><span><?php echo $value['merkmalstyp']; ?></span></td>
-        <td>
-            <a href="<?php echo site_url('sensor/merkmal_type_edit/'.$value['smt_id']); ?>">
-                <!-- <button type="btn">
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                </button> -->
-                <button type="button" class="btn btn-default">
-                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                </button>
-            </a>
-        </td>
-    </tr>
-<?php endforeach; ?>
+
     </table>
 </form>
 </div>

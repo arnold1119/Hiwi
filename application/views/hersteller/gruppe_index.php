@@ -5,16 +5,17 @@
     <title>Alle HerstellerLand Gruppe Namen</title>
 
 <?php echo  $this->load->view("header"); ?>
-<div id="klasse"   class="w80">
+<div id="search"  class="w80">
+	<h4>HerstellerLand Gruppe</h4>
 <br>
 <form action="<?php site_url('hersteller/gruppe_insert') ?>" method="post">
     <table class="table table-striped">
-<tr>
-    <td> <h5><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></h5></td>
-    <td><h5>
+<tr  class="row text">
+    <td class="col-xs-3"> <h5><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></h5></td>
+    <td class="col-xs-7"><h5>
     Add neues HerstellerLand_gruppe Name
     </h5></td>
-    <td>
+    <td class="col-xs-2">
         <a href="<?php echo site_url('hersteller/gruppe_insert'); ?>">
                     <!-- <button type="btn">
                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
@@ -30,14 +31,14 @@
 <?php foreach($gruppes as $value): ?>
 <?php if($value['gruppenname'] =="Keine Angabe"): ?>
 
-    <tr class="active"> 
-        <td><span><?php echo $value['fzhg_id']; ?></span></td>
+    <tr  class="row text active"> 
+        <td class="col-xs-3"><span><?php echo $value['fzhg_id']; ?></span></td>
 <?php else: ?>
-    <tr class="class_out"> 
-        <td><span><?php echo $value['fzhg_id']; ?></span></td>
+    <tr  class="row text class_out"> 
+        <td class="col-xs-3"><span><?php echo $value['fzhg_id']; ?></span></td>
 <?php endif; ?>
-        <td><span><?php echo $value['gruppenname']; ?></span></td>
-        <td>
+        <td class="col-xs-7"><span><?php echo $value['gruppenname']; ?></span></td>
+        <td class="col-xs-2">
 			<?php if($value['gruppenname']!="Keine Angabe" and $value['gruppenname']!='null'): ?>
             <a href="<?php echo site_url('hersteller/gruppe_edit/'.$value['fzhg_id']) ?>">
                 <!-- <button type="btn">

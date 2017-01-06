@@ -6,6 +6,7 @@
 
 <?php echo  $this->load->view("header"); ?>
 <div id="search" class="w900">
+	<h4>Add FAS Waehrung</h4>
 <br>
 <form action="<?php site_url('fas/waehrung_insert') ?>" method="post">
     <table class="table table-striped">

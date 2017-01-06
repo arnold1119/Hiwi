@@ -8,14 +8,15 @@
 </style>
 <?php echo  $this->load->view("header"); ?>
 <div id="search" class="w900">
+	<h4>Add FAS Hersteller</h4>
 	
 <br>
 <form action="<?php echo site_url('fas/fas_hersteller_insert/'); ?>" method="post">
 <table class="table table-striped">
-    <tr class="warning">
-    <td> <h5><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></h5></td>
-    <td><h5>Zeigen Alle FAS_Hersteller </h5></td>
-    <td>
+    <tr class="row active">
+    <td class="col-xs-3"> <h5><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></h5></td>
+    <td class="col-xs-7"> <h5>Zeigen Alle FAS_Hersteller </h5></td>
+    <td class="col-xs-2"> 
         <a href="<?php echo site_url('fas/fas_hersteller_index'); ?>">
                     <!-- <button type="btn">
                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
@@ -28,10 +29,10 @@
     </td>
     </tr>
 
-    <tr class="success">
-        <td> <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></td>
-        <td>HerstellerLand List</td>
-        <td>
+    <tr class="row">
+         <td class="col-xs-3"> <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></td>
+         <td class="col-xs-7">HerstellerLand List</td>
+         <td class="col-xs-2">
             <a href="<?php echo site_url('Land/index'); ?>">
                 <!-- <button type="btn">
                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>

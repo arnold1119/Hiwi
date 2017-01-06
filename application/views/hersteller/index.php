@@ -35,7 +35,8 @@
         <option value="<?php echo $value['fahrzeugname']; ?>"></option>
     <?php endforeach; ?>
 </datalist>
-<div id="klasse"  class="w80">
+<div id="search"  class="w80">
+	<h4>Hersteller</h4>
 <br>
 <table class="table table-striped">
 <tr class="active">

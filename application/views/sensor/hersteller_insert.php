@@ -8,6 +8,7 @@
 </style>
 <?php echo  $this->load->view("header"); ?>
 <div id="search" class="w900">
+	<h4>Add Sensor Hersteller</h4>
 <br>
 <form action="<?php echo site_url('sensor/sensor_hersteller_insert/'); ?>" method="post">
 <table class="table table-striped">
@@ -31,7 +32,7 @@
         <td> <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></td>
         <td>HerstellerLand List</td>
         <td>
-            <a href="<?php echo site_url('Land/index'); ?>">
+            <a href="<?php echo site_url('land/index'); ?>">
                 <!-- <button type="btn">
                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                 </button> -->

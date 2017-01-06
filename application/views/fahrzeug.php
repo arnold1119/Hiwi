@@ -173,7 +173,7 @@
         <span></span>
     </div>
     <div class="col-xs-7">
-        <a href="<?php echo site_url('bilder/auswahlen'); ?>">
+        <a href="<?php echo site_url('bilder/auswahlen?u='.$url); ?>">
             <!-- <button type="btn">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
             </button> -->
@@ -183,8 +183,8 @@
              
         </a>
     <?php if($bilder_status==1):?>
-        <span class="session_hidden"><?php echo $info['basename']; ?></span>
-        <img src="<?php echo $result; ?>" alt="" style="height: 50px;" class="session_hidden"/>
+        <span class="session_hidden"><?php echo $result; ?></span>
+        <img src="<?php echo '/quellen/Bilder/'.$result; ?>" alt="" style="height: 50px;" class="session_hidden"/>
         <input type="hidden" name="bilder" value="<?php echo $session_value; ?>"/>
     <?php else: ?>
     	<input type="hidden" name="bilder" value="null"/>
@@ -199,7 +199,16 @@
     </div>
     
     <div class="col-xs-3">
-    
+	    <!--<a href="<?php echo site_url('bilder/mysql_delete?fz_id=null');?>">
+    		<button type="button" class="btn btn-default">
+	    		<span class="glyphicon glyphicon-remove"></span>	
+	       	</button>
+    	</a>
+    	<a href="<?php echo site_url('bilder/reset?fz_id=null');?>">
+    		<button type="button" class="btn btn-default btn-sm">
+	    		<span>reset</span>
+	       	</button>
+    	</a>-->
     </div>
 
 </div>

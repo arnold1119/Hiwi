@@ -2,15 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <title>Document</title>
+    <title>Sensor Type</title>
 <?php $this->load->view("header"); ?>
 <div id="search" class="w900">
+	<h4>Sensor Type</h4>
 <br>
 <table class="table table-striped">
-<tr class="active">
-    <td> <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></td>
-    <td>Add new Sensor Type </td>
-    <td>
+<tr class="row active">
+    <td class="col-xs-3"> <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></td>
+    <td class="col-xs-7">Add new Sensor Type </td>
+    <td class="col-xs-2">
         <a href="<?php echo site_url('sensor/typeinsert'); ?>">
             <!-- <button type="btn">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
@@ -24,19 +25,19 @@
 
 <?php foreach($sensortype as $value): ?>
     <?php if($value['st_id'] == $st_index): ?>
-    <tr class="success"> 
-        <td>
+    <tr class="row success"> 
+        <td class="col-xs-3">
             <span><?php echo $value['st_id']; ?></span>
             <span class="glyphicon glyphicon-saved" aria-hidden="true" style="color:green">
             	
 			</span>
         </td>
 <?php else: ?>
-    <tr class="class_out">
-        <td><span><?php echo $value['st_id']; ?></span></td>
+    <tr class="row class_out">
+        <td class="col-xs-3"><span><?php echo $value['st_id']; ?></span></td>
 <?php endif; ?>
-        <td><span><?php echo $value['sensortyp']; ?></span></td>
-        <td>
+        <td class="col-xs-7"><span><?php echo $value['sensortyp']; ?></span></td>
+        <td class="col-xs-2">
 <?php if($value['st_id'] != 0): ?>
             <a href="<?php echo site_url('sensor/typeedit/'.$value['st_id']) ?>">
                 <!-- <button type="btn">

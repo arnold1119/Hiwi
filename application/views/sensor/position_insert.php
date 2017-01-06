@@ -6,6 +6,7 @@
 
 <?php echo  $this->load->view("header"); ?>
 <div id="search" class="w900">
+	<h4>Add Sensor Position</h4>
 <br>
 <form action="<?php site_url('sensor/position_insert') ?>" method="post">
     <table class="table table-striped">
@@ -37,27 +38,7 @@
             </td>
         </tr>
 
-<?php foreach($position as $value): ?>
-    <?php if($count == $value['sp_id']): ?>
-        <tr class="success">
-    <?php else: ?>
-        <tr>
-    <?php endif; ?>
-    
-        <td><span><?php echo $value['sp_id']; ?></span></td>
-        <td><span><?php echo $value['position']; ?></span></td>
-        <td>
-            <a href="<?php echo site_url('sensor/position_edit/'.$value['sp_id']); ?>">
-                <!-- <button type="btn">
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                </button> -->
-                <button type="button" class="btn btn-default">
-                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                </button>
-            </a>
-        </td>
-    </tr>
-<?php endforeach; ?>
+
     </table>
 </form>
 </div>

@@ -41,7 +41,8 @@
                 <option value="<?php echo $value['fasbezeichnung']; ?>"></option>
             <?php endforeach; ?>
         </datalist>
-<div id="search" class="w900">
+<div id="search" class="w80">
+	<h4>Add neue FAS Type</h4>
 <br>
 <form action="<?php site_url('fas/typeinsert') ?>" method="post">
     <table class="table table-striped">
@@ -60,7 +61,7 @@
                 </a>
     </td>
 </tr>
-        <tr class="danger">
+        <tr class="">
             <td>    
                 <span><h4>Add neu FAS_Type Name</h4></span>
             </td>
@@ -68,32 +69,12 @@
                 <input type="text" name="typ" placeholder="neue FAS_Type Name" autofocus required/>
             </td>
             <td>
-                <input type="submit" value="add" class="btn btn-danger"  style="width: 80px;"
+                <input type="submit" value="add" class="btn btn-default" 
                 name="add"/>
             </td>
         </tr>
 
-<?php foreach($fastype as $value): ?>
-    <?php if($count == $value['fast_id']): ?>
-        <tr class="success">
-    <?php else: ?>
-        <tr>
-    <?php endif; ?>
-    
-        <td><span><?php echo $value['fast_id']; ?></span></td>
-        <td><span><?php echo $value['typ']; ?></span></td>
-        <td>
-            <a href="<?php echo site_url('fas/typeedit/'.$value['fast_id']); ?>">
-                <!-- <button type="btn">
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                </button> -->
-                <button type="button" class="btn btn-default">
-                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                </button>
-            </a>
-        </td>
-    </tr>
-<?php endforeach; ?>
+
     </table>
 </form>
 </div>

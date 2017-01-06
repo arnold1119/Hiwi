@@ -8,6 +8,8 @@ class BIlder extends CI_Controller{
     public function __construct(){
         parent::__construct();
         $this->load->model("bilder_model","bilder");
+        $this->load->model("fahrzeug_model","fahrzeug");
+        $this->load->model("quelle_model",'quelle');
         
 //      $this->load->library('session');
         
@@ -122,7 +124,15 @@ public function insert() {
 
 	public function auswahlen($dirs = "/var/www/edit/quellen/Bilder"){
 		
+//		p($_SERVER);
 		
+		$vor_bilder = $this->input->get("bilder");
+		$fz_id = $this->input->get("fz_id");
+		if($vor_bilder) {
+			$this->fahrzeug->bilder_null_set($fz_id);
+			$this->bilder->vorbilder_set($vor_bilder);
+		}	
+		$data['url'] = $this->input->get("u");
 //		echo "<br/>";
 //		var_dump($dirs);
 //		echo "test";
@@ -254,34 +264,164 @@ public function insert() {
 	 
 	public function link(){
 		
-		$link = $this->input->get("link");		
-//		p($link);
-		$bilder['session_value'] = $link;
+		$link = $this->input->get("link");	
+		$u = $this->input->get("u");
+//		p($u);die;
+		$result = preg_split("/Bilder\//",$link);
+//		p(base_url($u));	
+//		p($result);die;
+		$bilder['session_value'] = $result[1];
 		$speicher = $this->bilder->Session_bilder_update($bilder);
 //		$result[0] = $this->bilder->Session_get_bilder();
 //		p($result);
 //		die;
 //		$result = preg_split("/edit/",$link);
 		if($speicher) {
-	
+			echo "<script>alert('Der Link gespeichert!!');
+				window.location.replace('".base_url('index.php/'.$u)."');
 			
-
-			echo "<script>alert('Der Link gespeichert!!');setTimeout(function(){
-				location.replace(document.referrer);
-			},30);</script>";
+			</script>";
 		} else{
-			echo "<script>alert('Fehler bei Speicher!!');setTimeout(function(){
-				location.replace(document.referrer);
-			},30);</script>";
+			echo "<script>alert('Fehler bei Speicher!!');
+			window.location.replace('".base_url('index.php/'.$u)."');
+			</script>";
 		}
-//		$result = preg_split("/quellen/",$result[1]);
-//		$result = preg_split("/\//",$result[1]);
-//		p($this->session->userdata('session_thumb_bilder'));
+	}
+	
+	public function reset() {
+		$fz_id = $this->input->get("fz_id");
+		
+		if($fz_id != "null") {
+				//		p($fz_id);
+			$vor_bilder = $this->bilder->Session_get_vorbilder()[0]['session_value'];
+	//		p($vor_bilder);
+			
+			$bilder = array(
+				'fz_id' => $fz_id,
+				'bilder' =>$vor_bilder,
+			);
+			
+	//		p($vor_bilder);
+	//		die;
+			if($vor_bilder != "null") {
+				$this->fahrzeug->fahrzeug_bilder_set($bilder);
+				$this->bilder->Session_vorbilder_null();
+				$this->bilder->Session_bilder_null();
+			} else{
+				$this->bilder->Session_bilder_null();
+			}
+			
+			
+			echo "<script>alert('Schon Reset!!');setTimeout(function(){
+					location.replace(document.referrer);
+				},30);</script>";
+		} else {
+			p("reset");
+		}
 
 		
 	}
 	
+	public function mysql_delete() {
+		$fz_id = $this->input->get("fz_id");
+//		p($fz_id);
+		if($fz_id != "null") {
+			$bilder= $this->fahrzeug->fahrzeug_bilder_get($fz_id)[0]['bilder'];
+		
+			$vor_bilder = array(
+				'fz_id' => $fz_id,
+				'bilder' =>$bilder,
+			);
+			$result = $this->fahrzeug->fahrzeug_bilder_get($fz_id)[0]['bilder'];
+			
+			
+	//		p($vor_bilder);
+	//		die;
+			if($result != "null") {
+				$this->bilder->vorbilder_set($bilder);
+				$this->bilder->Session_bilder_null();
+				$this->fahrzeug->bilder_null_set($fz_id);
+			}
+			
+			
+			echo "<script>alert('Schon loesen!!');setTimeout(function(){
+					location.replace(document.referrer);
+				},30);</script>";
+		} else {
+			p("delete");
+		}
+		
+	}
 	
+	public function file_auswahlen($dirs = "/var/www/edit/quellen/Dokumente") {
+		$gets = $this->input->get();
+		p($gets);
+		$quellenname = $this->input->get("quellenname");
+		$quelle_id = $this->input->get("quelle_id");
+//		die;
+		if($vorfile) {
+			$this->quelle->bilder_null_set($quelle_id);
+			$this->bilder->vorfile_set($quellenname);
+		}	
+		$data['url'] = $this->input->get("u");
+//		echo "<br/>";
+//		var_dump($dirs);
+//		echo "test";
+		$data['dirs'] = $dirs;
+		$this->load->view("bilder/file_auswahlen",$data);
+	}
+	
+	
+	public function file_link(){
+		
+		$link = $this->input->get("link");	
+		$u = $this->input->get("u");
+//		p($u);die;
+		$result = preg_split("/Dokumente\//",$link);
+//		p(base_url($u));	
+//		p($result);die;
+		$file['session_value'] = $result[1];
+		$speicher = $this->bilder->Session_file_update($file);
+//		$result[0] = $this->bilder->Session_get_bilder();
+//		p($result);
+//		die;
+//		$result = preg_split("/edit/",$link);
+		if($speicher) {
+			echo "<script>alert('Der Link gespeichert!!');
+				window.location.replace('".base_url('index.php/'.$u)."');
+			
+			</script>";
+		} else{
+			echo "<script>alert('Fehler bei Speicher!!');
+			window.location.replace('".base_url('index.php/'.$u)."');
+			</script>";
+		}
+	}
+	
+	
+	public function file_upload() {
+		$config['upload_path'] = './quellen/Dokumente/';
+		$config['allowed_types'] = 'pdf';
+		$config['max_size'] = '10000000';
+		
+
+		//载入上传类
+		$this->load->library('upload', $config);
+		//执行上传
+		$status = $this->upload->do_upload("thumb_bilder");
+		if($status) {
+			echo "<script>alert('Success zu upload');setTimeout(function(){
+				location.replace(document.referrer);
+			},300);</script>";
+		} else {
+//			p($this->upload->display_errors());
+			echo "<script>alert('Error bei upload');setTimeout(function(){
+				location.replace(document.referrer);
+			},300);</script>";
+		}
+		
+		
+	}
 	
 	
 	

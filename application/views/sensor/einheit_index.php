@@ -5,12 +5,13 @@
     <title>Document</title>
 <?php $this->load->view("header"); ?>
 <div id="search" class="w900">
+	<h4>Sensor Einheit</h4>
 <br>
 <table class="table table-striped">
-<tr class="active">
-    <td> <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></td>
-    <td>Add new Sensor Einheit </td>
-    <td>
+<tr class="row active">
+    <td class="col-xs-3"> <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></td>
+    <td class="col-xs-7"> Add new Sensor Einheit </td>
+    <td class="col-xs-2"> 
         <a href="<?php echo site_url('sensor/einheit_insert'); ?>">
             <!-- <button type="btn">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
@@ -25,16 +26,16 @@
 <?php foreach($einheit as $value): ?>
    
   
-    <tr class="class_out">
-        <td><span><?php echo $value['sme_id']; ?></span></td>
+    <tr class="row class_out">
+         <td class="col-xs-3"> <span><?php echo $value['sme_id']; ?></span></td>
 
 
-        <td><span><?php echo $value['einheit']; ?></span></td>
+         <td class="col-xs-7"> <span><?php echo $value['einheit']; ?></span></td>
 
             
 
 
-        <td>
+         <td class="col-xs-2"> 
 <?php if($value['sme_id'] != 0): ?>
             <a href="<?php echo site_url('sensor/einheit_edit/'.$value['sme_id']) ?>">
                 <!-- <button type="btn">

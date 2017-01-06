@@ -5,6 +5,9 @@
     <title>Document</title>
 
 <?php echo  $this->load->view("header"); ?>
+<div id="search" class="w900">
+	
+	<h4>Add Sensor Type</h4>
 	
 	
 
@@ -27,7 +30,7 @@
                 </a>
     </td>
 </tr>
-        <tr class="danger">
+        <tr class="">
             <td>    
                 <span><h4>Add neu Sensor Name</h4></span>
             </td>
@@ -35,32 +38,12 @@
                 <input type="text" name="sensortyp" placeholder="neue FAS_Type Name" autofocus required/>
             </td>
             <td>
-                <input type="submit" value="add" class="btn btn-danger"  style="width: 80px;"
+                <input type="submit" value="add" class="btn btn-default"  style="width: 80px;"
                 name="add"/>
             </td>
         </tr>
 
-<?php foreach($sensortype as $value): ?>
-    <?php if($count == $value['st_id']): ?>
-        <tr class="success">
-    <?php else: ?>
-        <tr>
-    <?php endif; ?>
-    
-        <td><span><?php echo $value['st_id']; ?></span></td>
-        <td><span><?php echo $value['sensortyp']; ?></span></td>
-        <td>
-            <a href="<?php echo site_url('sensor/typeedit/'.$value['st_id']); ?>">
-                <!-- <button type="btn">
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                </button> -->
-                <button type="button" class="btn btn-default">
-                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                </button>
-            </a>
-        </td>
-    </tr>
-<?php endforeach; ?>
+
     </table>
 </form>
 </div>

@@ -40,10 +40,11 @@
                 <option value="<?php echo $value['fasbezeichnung']; ?>"></option>
             <?php endforeach; ?>
         </datalist>
-<div id="search" class="w900">
+<div id="search" class="w80">
+	<h4>FAS Type</h4>
 <br>
 <table class="table table-striped">
-<tr class="info">
+<tr class="active">
     <td> <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></td>
     <td>Add new FAS_Type </td>
     <td>
@@ -51,8 +52,8 @@
             <!-- <button type="btn">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
             </button> -->
-            <button type="button" class="btn btn-info">
-                <span class="glyphicon glyphicon-plus" aria-hidden="true" style="color:white"></span>
+            <button type="button" class="btn btn-default">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
             </button>
         </a>
     </td>

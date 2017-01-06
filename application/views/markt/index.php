@@ -4,19 +4,21 @@
     <meta charset="UTF-8" />
     <title>Document</title>
 <?php $this->load->view("header"); ?>
-<div id="klasse"  class="w80">
+<div id="search"  class="w80">
+	<h4>Marktland</h4>
+	
 <br>
 <table class="table table-striped">
-<tr class="info">
-    <td> <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></td>
-    <td>Add new MarktLand </td>
-    <td>
+<tr class="rox text active">
+    <td class="col-xs-3"> <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></td>
+    <td class="col-xs-7"> Add new MarktLand </td>
+    <td class="col-xs-2"> 
         <a href="<?php echo site_url('markt/insert'); ?>">
             <!-- <button type="btn">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
             </button> -->
-            <button type="button" class="btn btn-info">
-                <span class="glyphicon glyphicon-plus" aria-hidden="true" style="color:white"></span>
+            <button type="button" class="btn btn-default">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
             </button>
         </a>
     </td>
@@ -24,18 +26,18 @@
 
 <?php foreach($mland as $value): ?>
     <?php if($value['markt_id'] == $ml_index): ?>
-    <tr class="success"> 
-        <td>
+    <tr class="rox text success"> 
+        <td class="col-xs-3">
             <span><?php echo $value['markt_id']; ?></span>
             <span class="glyphicon glyphicon-saved" aria-hidden="true" style="color:green">
             
         </td>
 <?php else: ?>
-    <tr class="class_out">
-        <td><span><?php echo $value['markt_id']; ?></span></td>
+    <tr class="rox text class_out">
+        <td class="col-xs-3"><span><?php echo $value['markt_id']; ?></span></td>
 <?php endif; ?>
-        <td><span><?php echo $value['marktname']; ?></span></td>
-        <td>
+        <td class="col-xs-7"><span><?php echo $value['marktname']; ?></span></td>
+        <td class="col-xs-2">
         <?php if($value['marktname']!="null"): ?>
 
             <a href="<?php echo site_url('markt/edit/'.$value['markt_id']) ?>">

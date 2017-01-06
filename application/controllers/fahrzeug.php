@@ -23,6 +23,7 @@ class Fahrzeug extends CI_Controller{
 //      
 //      p('../..'.$_SERVER['PHP_SELF']);
 //      die;
+		$data['url'] = uri_string();
         $data['fahrzeug'] = $this->fahrzeug->f_all(); 
 		$data['hersteller'] = $this->h->h_select();
 //         p($data);die;
@@ -32,15 +33,20 @@ class Fahrzeug extends CI_Controller{
         
 //      p($this->session->userdata('session_thumb_bilder'));
 		$bilder = $this->bilder->Session_get_bilder()[0];
-//		p($bilder);
+//		$data['bilder_status'] = $this->bilder->Session_get_bilder()[0];
+//		$data['sessions'] = $this->bilder->Session_all();
+//		p($data['bilder_status']);
+//		p($data['sessions']);
 	
 		if($bilder['session_value'] != 'null') {
 			$link = $bilder['session_value'];
 			$data['bilder_status'] = 1;
-			$data['info'] = pathinfo($link);
-			$result = preg_split("/www/",$link);
+//			$data['info'] = pathinfo($link);
+//			$result = preg_split("/www/",$link);
+//			p($link);
+//			p($result);
 	      	$data['session_value'] = $bilder['session_value'];
-	        $data['result'] = $result[1];
+	        $data['result'] = $link;
 		} else{
 			$data['bilder_status'] = 0;
 			
@@ -114,7 +120,7 @@ class Fahrzeug extends CI_Controller{
 			$fahrzeug['bilder'] = $result[1];
 		} 
 		
-		p($fahrzeug['bilder']);
+//		p($fahrzeug['bilder']);
 		
 //		die;
 //		$bilders = array(
@@ -178,6 +184,7 @@ class Fahrzeug extends CI_Controller{
                 
                 if($fz_id) {
                 	$this->bilder->Session_bilder_null();
+                	$this->bilder->Session_vorbilder_null();
                 }
                 $markt['fz_id'] = $fz_id;
 				
@@ -501,12 +508,13 @@ public function f_list_fa() {
 
     public function edit(){
     if($this->input->post()) {
-			
+    	$fahrzeug['fz_id'] = $fz_id = $this->uri->segment(3);
+		
     	$data = $this->input->post();
-    	p($data);
+//  	p($data);
 //  	die;
     	
-		$fahrzeug['fz_id'] = $fz_id = $this->uri->segment(3);
+		
 		$fahrzeug['bilder'] = $data['bilder'];	
 		$fahrzeug['fzh_id'] = $data['fzh_id'];
 		$fahrzeug['fahrzeugname'] = trim($data['fahrzeugname']);
@@ -600,41 +608,34 @@ public function f_list_fa() {
         
 
     
-       } else{
-       	
-//     	$bilder = $this->bilder->Session_get_bilder()[0];
-//	
-//		if($bilder['session_value'] != 'null') {
-//			$link = $bilder['session_value'];
-//			$data['bilder_status'] = 1;
-//			$data['info'] = pathinfo($link);
-//			$result = preg_split("/www/",$link);
-//	      	$data['session_value'] = $bilder['session_value'];
-//	        $data['result'] = $result[1];
-//		} else{
-//			$data['bilder_status'] = 0;
-//		}
-		
-		
+      } else{
+//    	p($_SERVER);
+//    		$data['pathinfo'] = $_SERVER['PATH_INFO'];
+
+			$data['url'] = uri_string();
+			
             $fz_id = $this->uri->segment(3);
+            $data['bilder_status'] = $this->bilder->Session_get_bilder()[0];
+			$data['sessions'] = $this->bilder->Session_all();
+//          $result = $this->fahrzeug->fahrzeug_bilder_get($fz_id);
+//		p($result);
+//		die;
         	$data['fahrzeug'] = $this->fahrzeug->f_all(); 
 			$data['hersteller'] = $this->h->h_select();
             $data['update'] = $this->fahrzeug->all_teil_such($fz_id);
-//			p($data);die;
+
             $data["quelle"] = $this->quelle->q_all();
             $data['fas'] = $this->fas->fas_all();
             $data['mland'] = $this->land->m_select();
-            $data['bilder_status'] = $this->bilder->Session_get_bilder()[0];
-            p($data['bilder_status']);
-//          die;
-//                p($data['update']);
-        
-            // // p($data['hersteller']);die;
+            
+			
             $data["klasse"] = $this->k->k_select();
-       p($data['update']);
-       p($data['klasse']);
-       
-//     die;
+            
+//          p($data['pathinfo']);
+//          die;
+//     		p($data['update']['fahrzeug']);
+//     		p($data['sessions']);
+
             $this->load->view("fahrzeug/edit",$data);
         }
         

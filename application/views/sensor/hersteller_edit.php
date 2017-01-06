@@ -8,6 +8,7 @@
 </style>
 <?php echo  $this->load->view("header"); ?>
 <div id="search" class="w900">
+	<h4>Update Sensor Hersteller</h4>
 <br>
 <form action="<?php echo site_url('sensor/sensor_hersteller_edit/'.$result[0]['sh_id']); ?>" method="post">
     <table class="table table-striped">

@@ -5,7 +5,8 @@
     <title>Document</title>
 
 <?php echo  $this->load->view("header"); ?>
-<div id="klasse" class="w900">
+<div id="search" class="w900">
+	<h4>Add FAS Entwicklung</h4>
 <br>
 <form action="<?php site_url('fas/entwicklung_insert') ?>" method="post">
     <table class="table table-striped">
@@ -24,40 +25,20 @@
                 </a>
     </td>
 </tr>
-        <tr class="danger">
+        <tr class="">
             <td>    
-                <span><h4>Ddd neu FAS_Entwicklung Name</h4></span>
+                <span><h4>Add neu FAS_Entwicklung Name</h4></span>
             </td>
             <td>
                 <input type="text" name="entwicklung" placeholder="neue FAS_Entwicklung Name" autofocus required/>
             </td>
             <td>
-                <input type="submit" value="add" class="btn btn-danger"  style="width: 80px;"
+                <input type="submit" value="add" class="btn btn-default" 
                 name="add"/>
             </td>
         </tr>
 
-<?php foreach($fasentwicklung as $value): ?>
-    <?php if($count == $value['fase_id']): ?>
-        <tr class="success">
-    <?php else: ?>
-        <tr>
-    <?php endif; ?>
-    
-        <td><span><?php echo $value['fase_id']; ?></span></td>
-        <td><span><?php echo $value['entwicklung']; ?></span></td>
-        <td>
-            <a href="<?php echo site_url('fas/entwicklung_edit/'.$value['fase_id']); ?>">
-                <!-- <button type="btn">
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                </button> -->
-                <button type="button" class="btn btn-default">
-                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                </button>
-            </a>
-        </td>
-    </tr>
-<?php endforeach; ?>
+
     </table>
 </form>
 </div>

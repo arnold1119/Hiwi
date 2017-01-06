@@ -5,12 +5,13 @@
     <title>Document</title>
 <?php $this->load->view("header"); ?>
 <div id="search" class="w900">
+	<h4>FAS Betriebsgrenze Einheit</h4>
 <br>
 <table class="table table-striped">
-<tr class="active">
-    <td> <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></td>
-    <td>Add new FAS Betriebsgrenze Einheit </td>
-    <td>
+<tr class="row active">
+    <td class="col-xs-3"> <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></td>
+    <td class="col-xs-7">Add new FAS Betriebsgrenze Einheit </td>
+    <td class="col-xs-2">
         <a href="<?php echo site_url('fas/einheit_insert'); ?>">
             <!-- <button type="btn">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
@@ -24,24 +25,24 @@
 
 <?php foreach($einheit as $value): ?>
     <?php if($value['einheit_id'] == $t_index): ?>
-    <tr class="success"> 
-        <td>
+    <tr class="row success"> 
+        <td class="col-xs-3">
             <span><?php echo $value['einheit_id']; ?></span>
             <span class="glyphicon glyphicon-saved" aria-hidden="true" style="color:green">
             	
 			</span>
         </td>
 <?php else: ?>
-    <tr class="class_out">
-        <td><span><?php echo $value['einheit_id']; ?></span></td>
+    <tr class="row class_out">
+        <td class="col-xs-3"><span><?php echo $value['einheit_id']; ?></span></td>
 <?php endif; ?>
 
-        <td><span><?php echo $value['einheit']; ?></span></td>
+        <td class="col-xs-7"><span><?php echo $value['einheit']; ?></span></td>
 
             
 
 
-        <td>
+        <td class="col-xs-2">
 <?php if($value['einheit_id'] != 0): ?>
             <a href="<?php echo site_url('fas/einheit_edit/'.$value['einheit_id']) ?>">
                 <!-- <button type="btn">

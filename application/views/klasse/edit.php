@@ -37,7 +37,8 @@
     <?php endforeach; ?>
 </datalist>
 
-<div id="klasse" class="w80">
+<div id="search"  class="w80">
+	<h4>Update Klasse</h4>
 <br>
 <form action="<?php echo site_url('klasse/edit/'.$result[0]['fzk_id']); ?>" method="post">
 
@@ -58,7 +59,7 @@
     </td>
 </tr>
 
-<tr class="info">
+<tr>
     <td> <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></td>
     <td>Add new Klasse </td>
     <td>
@@ -66,14 +67,14 @@
             <!-- <button type="btn">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
             </button> -->
-            <button type="button" class="btn btn-info">
-                <span class="glyphicon glyphicon-plus" aria-hidden="true" style="color:white"></span>
+            <button type="button" class="btn btn-default">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
             </button>
         </a>
     </td>
 </tr>
 
-        <tr class="danger">
+        <tr class="active">
             <td>    
                 <span>klass_id&nbsp;&nbsp;<?php echo $result[0]['fzk_id']; ?></span>
             </td>
@@ -81,7 +82,7 @@
                 <input type="text" name="klasse" autofocus value="<?php echo $result[0]['klasse'] ?>" />
             </td>
             <td>
-                <input type="submit" value="edit" class="btn btn-danger"  style="width: 80px;"
+                <input type="submit" value="edit" class="btn btn-default" "
                 name="edit"/>
             </td>
         </tr>

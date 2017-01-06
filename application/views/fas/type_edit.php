@@ -41,7 +41,8 @@
                 <option value="<?php echo $value['fasbezeichnung']; ?>"></option>
             <?php endforeach; ?>
         </datalist>
-<div id="search" class="w900">
+<div id="search" class="w80">
+	<h4>Update FAS Type</h4>
 <br>
 <form action="<?php echo site_url('fas/typeedit/'.$result[0]['fast_id']); ?>" method="post">
 
@@ -62,7 +63,7 @@
     </td>
 </tr>
 
-<tr class="info">
+<tr class="">
     <td> <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></td>
     <td>Add new Fastype </td>
     <td>
@@ -70,14 +71,14 @@
             <!-- <button type="btn">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
             </button> -->
-            <button type="button" class="btn btn-info">
-                <span class="glyphicon glyphicon-plus" aria-hidden="true" style="color:white"></span>
+            <button type="button" class="btn btn-default">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
             </button>
         </a>
     </td>
 </tr>
 
-        <tr class="danger">
+        <tr class="active">
             <td>    
                 <span>fast_id&nbsp;&nbsp;<?php echo $result[0]['fast_id']; ?></span>
             </td>
@@ -85,8 +86,8 @@
                 <input type="text" name="typ" autofocus value="<?php echo $result[0]['typ'] ?>" />
             </td>
             <td>
-                <input type="submit" value="edit" class="btn btn-danger"  style="width: 80px;"
-                name="edit"/>
+                <input type="submit" value="edit" class="btn btn-default"
+                name="edit" />
             </td>
         </tr>
 
