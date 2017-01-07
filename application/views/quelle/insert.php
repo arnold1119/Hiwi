@@ -29,15 +29,15 @@
 </table>
 <hr>
 <div class="row text">
-    <div class="col-xs-3">
+    <div class="col-xs-2">
         <label><span>quellenname</span></label>
     </div>
-    <div class="col-xs-7">
+    <div class="col-xs-6">
         <!-- <input type="text" class="form-control" value="" name="quellenname"> -->
-        <textarea class="form-control" rows="3" name="quellenname" cols="50"><?php if($file_status): ?><?php echo $session_value; ?><?php endif; ?></textarea>
+        <textarea class="form-control" rows="3" name="quellenname" cols="50"><?php if($status): ?><?php echo $_SESSION['quellenname']; ?><?php endif; ?></textarea>
         
     </div>
-    <div class="col-xs-2">
+    <div class="col-xs-4">
     
     </div>
 </div>
@@ -46,23 +46,23 @@
 	
 	
 <div class="row text">
-    <div class="col-xs-3">
+    <div class="col-xs-2">
         <label><span>Link</span></label>
     </div>
-    <div class="col-xs-7">
+    <div class="col-xs-6">
         <!-- <input type="text" class="form-control" value=""> -->
-        <textarea class="form-control" rows="3" name="link" cols="50"><?php if($file_status): ?>http://fasdb.iffhz.ing.tu-bs.de/edit/quelle/Dokumente<?php endif; ?></textarea>
+        <textarea class="form-control" rows="3" name="link" cols="50"><?php if($status): ?>http://fasdb.iffhz.ing.tu-bs.de/edit/quelle/Dokumente<?php endif; ?></textarea>
     </div>
-    <div class="col-xs-2">
+    <div class="col-xs-4" style="text-align: right;">
     	<a href="<?php echo site_url('bilder/file_auswahlen?u='.$url); ?>">
-	            <!-- <button type="btn">
-	                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-	            </button> -->
-	            <button type="button" class="btn btn-default">
-	                auf dem Server auswählen
-	            </button>
-	             
-	        </a>
+            <!-- <button type="btn">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+            </button> -->
+            <button type="button" class="btn btn-default">
+                auf dem Server auswählen
+            </button>
+             
+        </a>
     </div>
 </div>
 <br>

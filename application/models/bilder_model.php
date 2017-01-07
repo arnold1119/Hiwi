@@ -141,6 +141,11 @@ class Bilder_model extends CI_Model{
     	$this->db->update("Session",$array,array('session_name'=>'vorfile'));
     }
     
+    public function Session_bilderid_null() {
+    	$array['session_value'] = 'null';
+    	return $this->db->update("Session",$array,array('session_name'=>'bilder_id'));
+    }
+    
     
     
     

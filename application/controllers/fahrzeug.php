@@ -30,23 +30,26 @@ class Fahrzeug extends CI_Controller{
         $data["quelle"] = $this->quelle->q_all();
         $data['fas'] = $this->fas->fas_all();
         $data['mland'] = $this->land->m_select();
-        
+//      p($this->input->get("bilder"));
 //      p($this->session->userdata('session_thumb_bilder'));
-		$bilder = $this->bilder->Session_get_bilder()[0];
-//		$data['bilder_status'] = $this->bilder->Session_get_bilder()[0];
-//		$data['sessions'] = $this->bilder->Session_all();
-//		p($data['bilder_status']);
-//		p($data['sessions']);
-	
-		if($bilder['session_value'] != 'null') {
-			$link = $bilder['session_value'];
+//		$bilder = $this->bilder->Session_get_bilder()[0];
+////		$data['bilder_status'] = $this->bilder->Session_get_bilder()[0];
+////		$data['sessions'] = $this->bilder->Session_all();
+////		p($data['bilder_status']);
+////		p($data['sessions']);
+		$_SESSION['bilder'] = $this->input->get("bilder");
+		
+//	die;
+//$_SESSION['bilder']
+		if($_SESSION['bilder']) {
+//			$link = $bilder['session_value'];
 			$data['bilder_status'] = 1;
 //			$data['info'] = pathinfo($link);
 //			$result = preg_split("/www/",$link);
 //			p($link);
 //			p($result);
-	      	$data['session_value'] = $bilder['session_value'];
-	        $data['result'] = $link;
+//	      	$data['session_value'] = $bilder['session_value'];
+//	        $data['result'] = $link;
 		} else{
 			$data['bilder_status'] = 0;
 			
@@ -107,8 +110,7 @@ class Fahrzeug extends CI_Controller{
 
     public function speicher() {
     	$data = $this->input->post();
-//		p($data);
-////		die;
+		p($data); die;
 		$fahrzeug['fzh_id'] = $data['fzh_id'];
 		$fahrzeug['fahrzeugname'] = trim($data['fahrzeugname']);
 		$fahrzeug['bilder'] = $data['bilder'];
@@ -508,53 +510,14 @@ public function f_list_fa() {
 
     public function edit(){
     if($this->input->post()) {
+//  	p($this->input->post());
+//  	die;
     	$fahrzeug['fz_id'] = $fz_id = $this->uri->segment(3);
 		
-    	$data = $this->input->post();
-//  	p($data);
-//  	die;
-    	
-		
+    	$data = $this->input->post();		
 		$fahrzeug['bilder'] = $data['bilder'];	
 		$fahrzeug['fzh_id'] = $data['fzh_id'];
 		$fahrzeug['fahrzeugname'] = trim($data['fahrzeugname']);
-
-//  	$config['upload_path'] = '/quellen/Bilder/';
-//		$config['allowed_types'] = 'gif|jpg|png|jpeg';
-//		$config['max_size'] = '10000';
-//		$config['file_name'] = $fahrzeug['fahrzeugname'].$data['baujahr'];
-//
-//		//载入上传类
-//		$this->load->library('upload', $config);
-//		//执行上传
-//		$status = $this->upload->do_upload("thumb_bilder");
-//		if(!$status) {
-//			$fahrzeug['bilder'] = $data['alt_bilder'];
-////			$wrong = $this->upload->display_errors();
-//
-////			if($wrong){
-////				error($wrong);
-////			}
-//		} else{
-//			
-//			//返回信息
-//			
-//			$info = $this->upload->data();	
-//			$fahrzeug['bilder'] = $info['file_name'];
-////			p($info);		
-//		}
-		
-		
-//      p($fahrzeug['bilder']);
-		
-		
-		
-// 	p($data);
-        
-//		var $array = array(
-//			"fahrzeugname" => $fahrzeug['fahrzeugname'],
-//		);
-//		$$this->fahrzeug->exit_id($array);
         $fahrzeug['fzk_id'] = $data['fzk_id'];
         $fahrzeug['baujahr'] = $data['baujahr'];
         $fahrzeug['aenderung'] = $data['aenderung'];
@@ -564,9 +527,6 @@ public function f_list_fa() {
         if($fahrzeug) {
             if($flag) {
                 $this->fahrzeug->edit_update($fahrzeug);
-            
-//p($fz_id);	
-
                 $markt['fz_id'] = $fz_id;
 				
 				if(isset($data['markt_id'])) {
@@ -615,27 +575,35 @@ public function f_list_fa() {
 			$data['url'] = uri_string();
 			
             $fz_id = $this->uri->segment(3);
-            $data['bilder_status'] = $this->bilder->Session_get_bilder()[0];
-			$data['sessions'] = $this->bilder->Session_all();
+	
 //          $result = $this->fahrzeug->fahrzeug_bilder_get($fz_id);
 //		p($result);
 //		die;
+
         	$data['fahrzeug'] = $this->fahrzeug->f_all(); 
 			$data['hersteller'] = $this->h->h_select();
             $data['update'] = $this->fahrzeug->all_teil_such($fz_id);
-
             $data["quelle"] = $this->quelle->q_all();
             $data['fas'] = $this->fas->fas_all();
             $data['mland'] = $this->land->m_select();
-            
-			
             $data["klasse"] = $this->k->k_select();
             
-//          p($data['pathinfo']);
+//          p($data['update']);
+            $bilder = $data['update']['fahrzeug'][0]['bilder'];
+            $flag = $this->input->get("bilder");
+            if($flag) {
+            	$bilder = $flag;
+            }
+            
+//          p($bilder);
+            if($bilder=="null") {
+            	$data['status'] = 0;
+            } else{
+            	$data['status'] = 1;
+            	$_SESSION['bilder'] = $bilder;
+            }
 //          die;
-//     		p($data['update']['fahrzeug']);
-//     		p($data['sessions']);
-
+//          p($_SESSION['bilder']);
             $this->load->view("fahrzeug/edit",$data);
         }
         

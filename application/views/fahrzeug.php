@@ -183,9 +183,9 @@
              
         </a>
     <?php if($bilder_status==1):?>
-        <span class="session_hidden"><?php echo $result; ?></span>
-        <img src="<?php echo '/quellen/Bilder/'.$result; ?>" alt="" style="height: 50px;" class="session_hidden"/>
-        <input type="hidden" name="bilder" value="<?php echo $session_value; ?>"/>
+        <span class="session_hidden"><?php echo $_SESSION['bilder']; ?></span>
+        <img src="<?php echo '/quellen/Bilder/'.$_SESSION['bilder']; ?>" alt="" style="height: 50px;" class="session_hidden"/>
+        <input type="hidden" name="bilder" class="session_hidden" value="<?php echo $_SESSION['bilder'] ; ?>"/>
     <?php else: ?>
     	<input type="hidden" name="bilder" value="null"/>
     	
@@ -199,17 +199,23 @@
     </div>
     
     <div class="col-xs-3">
-	    <!--<a href="<?php echo site_url('bilder/mysql_delete?fz_id=null');?>">
-    		<button type="button" class="btn btn-default">
-	    		<span class="glyphicon glyphicon-remove"></span>	
-	       	</button>
-    	</a>
-    	<a href="<?php echo site_url('bilder/reset?fz_id=null');?>">
-    		<button type="button" class="btn btn-default btn-sm">
-	    		<span>reset</span>
-	       	</button>
-    	</a>-->
+	    
+		<button type="button" class="btn btn-default" onclick="bilder_del(this)">
+    		<span class="glyphicon glyphicon-remove"></span>	
+       	</button>
+    	
     </div>
+<script type="text/javascript">
+	function bilder_del(obj) {
+		var value = $("input[name='bilder']").val();
+		$("img[class='session_hidden']").remove();
+		$("span[class='session_hidden']").remove();
+		$("input[name='bilder']").val('null');
+//		alert(value);
+	}
+</script>
+
+
 
 </div>
 <hr>         

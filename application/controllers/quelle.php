@@ -66,20 +66,14 @@ class Quelle extends CI_Controller{
                 
             } else{
             	
-		$file = $this->bilder->Session_get_file()[0];
-            	
-	        if($file['session_value'] != 'null') {
-				$link = $file['session_value'];
-				$data['file_status'] = 1;
-	//			$data['info'] = pathinfo($link);
-	//			$result = preg_split("/www/",$link);
-	//			p($link);
-	//			p($result);
-		      	$data['session_value'] = $file['session_value'];
-		        $data['result'] = $link;
-//		        p($data['session_value']);
+//			$file = $this->bilder->Session_get_file()[0];
+            $_SESSION['quellenname'] = $this->input->get("quelle");
+	        if($_SESSION['quellenname']) {
+				
+				$data['status'] = 1;
 			} else{
-				$data['file_status'] = 0;
+				
+				$data['status'] = 0;
 				
 			}
             	
@@ -91,7 +85,7 @@ class Quelle extends CI_Controller{
 
         public function edit() {
             if($this->input->post("update")) {
-                // p($_POST);die;
+//                 p($_POST);die;
                 $quelle_id = $this->uri->segment(3);
                 $link = $this->input->post('link');
                 $quellenname = $this->input->post("quellenname");
@@ -123,11 +117,30 @@ class Quelle extends CI_Controller{
 //              p($quelle_id);
                 $array = array(
                     'quelle_id' => $quelle_id,
-                    );
+                );
                     
 //                  p($array);
                 $data['result'] = $this->quelle->qbindung_s($array);
-//              p($data['result']);die;
+                $quellenname = $data['result'][0]['quellenname'];
+                $link = $data['result'][0]['link'];
+               
+                $quelle_get = $this->input->get('quelle');
+//              $link_get = $this->input->get("link");
+                
+                if($quelle_get) {
+                	$quellenname = $quelle_get;
+                	$link = "http://fasdb.iffhz.ing.tu-bs.de/edit/quelle/Dokumente";
+                }
+                
+                if($quellenname=="null") {
+	            	$data['status'] = 0;
+	            } else{
+	            	$data['status'] = 1;
+	            	$_SESSION['link'] = $link;
+	            	$_SESSION['quellenname'] = $quellenname;
+	            }
+//              p($data['result']);
+//              die;
                 $this->load->view("quelle/edit",$data);
             }
         }
