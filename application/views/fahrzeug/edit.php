@@ -160,6 +160,64 @@
         </div>        
 <br />
 <hr />
+ <div class="markt row">
+            <div class="col-xs-2">
+                <label><span>Markt</span></label>
+            </div>
+            <div class="col-xs-7">
+                <div class="marktselect">
+                    <select class="form-control" id="HerstellerLand">
+                        <?php foreach($mland as $value): ?>
+                            <option value="<?php echo $value['markt_id']; ?>"><?php echo $value['marktname']; ?></option>}
+                        <?php endforeach; ?>
+                        <option value="0" class="nullmarkt">null</option>}
+                    </select>
+                    <br> <br>
+                </div>
+                
+
+            </div>
+            <div class="col-xs-3">
+                    <!-- <button type="btn">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    </button> -->
+                <button type="button" class="btn btn-default m_add">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                </button>
+                
+                <a href="<?php echo site_url('markt/index'); ?>">
+                    <!-- <button type="btn">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    </button> -->
+                    <button type="button" class="btn btn-default">
+                        <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+                    </button>
+                </a>
+            </div>
+        </div>  
+        <div class="row quelle markt_quelle">
+        	<?php foreach($update['markt'] as $key => $value): ?>
+			<div class='out'><div class='col-xs-2'>
+				<input type='hidden' name='markt_id[]' value="<?php echo $value['markt_id'] ?>">markt[<?php echo $key+1;?>]
+			</div>
+			<div class='col-xs-7'><?php echo $value['marktname']; ?></div>
+				<div class='col-xs-3'>
+					<a href='javascript:' onclick='del(this,markt)'>
+						<button type='button' class='btn btn-default'>
+							<span class='glyphicon glyphicon-remove' aria-hidden='true'></span>
+						</button>
+					</a>
+				</div>
+			</div>
+			<?php endforeach; ?>
+			
+			
+			
+			<!--<span class="all_markt_index"><?php echo count($update['markt']); ?></span>-->
+			<input type="hidden" name="all_markt_index" value="<?php echo count($update['markt']); ?>"/>
+			
+		</div>  
+<hr />
 
 <!--//bilder 上传按钮开始-->
         <!--<div class="row text">
@@ -228,77 +286,21 @@
 <hr>         
 	
 <div class="markt row">
-            <div class="col-xs-2">
-                <h4>Quelle</h4><br />
-            </div>
-            <div class="col-xs-7">
-                
-                
-
-            </div>
-            <div class="col-xs-3">
-                   
-                
-            </div>
-        </div>  
+    <div class="col-xs-2">
+        <h4>Quelle</h4><br />
+    </div>
+    <div class="col-xs-7">
         
-        <div class="markt row">
-            <div class="col-xs-2">
-                <label><span>Markt</span></label>
-            </div>
-            <div class="col-xs-7">
-                <div class="marktselect">
-                    <select class="form-control" id="HerstellerLand">
-                        <?php foreach($mland as $value): ?>
-                            <option value="<?php echo $value['markt_id']; ?>"><?php echo $value['marktname']; ?></option>}
-                        <?php endforeach; ?>
-                        <option value="0" class="nullmarkt">null</option>}
-                    </select>
-                    <br> <br>
-                </div>
-                
+        
 
-            </div>
-            <div class="col-xs-3">
-                    <!-- <button type="btn">
-                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                    </button> -->
-                <button type="button" class="btn btn-default m_add">
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                </button>
-                
-                <a href="<?php echo site_url('markt/index'); ?>">
-                    <!-- <button type="btn">
-                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                    </button> -->
-                    <button type="button" class="btn btn-default">
-                        <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-                    </button>
-                </a>
-            </div>
-        </div>  
-        <div class="row quelle markt_quelle">
-        	<?php foreach($update['markt'] as $key => $value): ?>
-			<div class='out'><div class='col-xs-2'>
-				<input type='hidden' name='markt_id[]' value="<?php echo $value['markt_id'] ?>">markt[<?php echo $key+1;?>]
-			</div>
-			<div class='col-xs-7'><?php echo $value['marktname']; ?></div>
-				<div class='col-xs-3'>
-					<a href='javascript:' onclick='del(this,markt)'>
-						<button type='button' class='btn btn-default'>
-							<span class='glyphicon glyphicon-remove' aria-hidden='true'></span>
-						</button>
-					</a>
-				</div>
-			</div>
-			<?php endforeach; ?>
-			
-			
-			
-			<!--<span class="all_markt_index"><?php echo count($update['markt']); ?></span>-->
-			<input type="hidden" name="all_markt_index" value="<?php echo count($update['markt']); ?>"/>
-			
-		</div>  
+    </div>
+    <div class="col-xs-3">
+           
+        
+    </div>
+</div>  
+        
+       
 <script type="text/javascript">
 	function del(obj,s) {
 	if(s==markt) {
@@ -468,7 +470,7 @@ $(function() {
                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                 </button>
                 
-                <a href="<?php echo site_url('fas/index'); ?>">
+                <a href="<?php echo site_url('fas/f_list'); ?>">
                     <!-- <button type="btn">
                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                     </button> -->

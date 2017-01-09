@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8" />
     <title>Document</title>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('style/css/jquery-ui.css'); ?>">
 <?php echo  $this->load->view("header"); ?>
 <div id="search"  class="w80">
 	<h4>Update new Quelle</h4>
@@ -88,8 +89,10 @@
         <input type="submit" value="update" name="update" style="width: 100px;" class="btn btn-default"/>
     </div>
 </div>
-<script src="http://c.cnzz.com/core.php"></script>
-<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+<script src="<?php echo base_url('style/js/jquery-1.12.4.js') ?>"></script>
+<script src="<?php echo base_url('style/js/jquery-ui.js') ?>"></script>
+
 <script>
     $(function() {
         $( "#datepicker" ).datepicker();

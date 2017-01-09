@@ -13,11 +13,12 @@
 </style>
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 <script src="<?php echo base_url('style/js/bootstrap.min.js') ?>"></script>
-<script data-main="<?php echo base_url('style/main');?>" src='<?php echo base_url('style/require.js');?>'></script>
+
 
     <link rel="stylesheet" type="text/css" href=" <?php echo base_url('style/css/base.css'); ?>">
    	<link rel="stylesheet" type="text/css" href=" <?php echo base_url('style/css/header.css'); ?>">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('style/css/fahr.css'); ?>">
+	
 </head>
 <body>
     <div id="logo" class="shadow">

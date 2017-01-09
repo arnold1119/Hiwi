@@ -159,9 +159,9 @@ public function insert() {
 		$keywords = preg_split("/dir_delete/",$_SERVER['REQUEST_URI']);
 		$dirs = $keywords[1];
 		del_dir($dirs);
-		echo "<script>alert('Der Ordner schon werdern gelost!');setTimeout(function(){
+		echo "<script>setTimeout(function(){
 			location.replace(document.referrer);
-		},1000);</script>";
+		},10);</script>";
 	}
 	public function txt_file_open($all){
 //		p($all);
@@ -238,9 +238,9 @@ public function insert() {
 		$all = $this->input->get("fileDelete");
 		unlink($all);
 		
-		echo "<script>alert('Der File schon wird gelost!');setTimeout(function(){
+		echo "<script>setTimeout(function(){
 			location.replace(document.referrer);
-		},1000);</script>";
+		},10);</script>";
 	}
 	
 	
@@ -256,14 +256,14 @@ public function insert() {
 		//执行上传
 		$status = $this->upload->do_upload("thumb_bilder");
 		if($status) {
-			echo "<script>alert('Success zu upload');setTimeout(function(){
+			echo "<script>setTimeout(function(){
 				location.replace(document.referrer);
-			},300);</script>";
+			},30);</script>";
 		} else {
 //			p($this->upload->display_errors());
 			echo "<script>alert('Error bei upload');setTimeout(function(){
 				location.replace(document.referrer);
-			},300);</script>";
+			},30);</script>";
 		}
 		
 		
@@ -316,7 +316,7 @@ public function insert() {
 			}
 			
 			
-			echo "<script>alert('Schon Reset!!');setTimeout(function(){
+			echo "<script>setTimeout(function(){
 					location.replace(document.referrer);
 				},30);</script>";
 		} else {
@@ -346,7 +346,7 @@ public function insert() {
 			}
 			
 			
-			echo "<script>alert('Schon loesen!!');setTimeout(function(){
+			echo "<script>setTimeout(function(){
 					location.replace(document.referrer);
 				},30);</script>";
 		} else {
@@ -393,12 +393,12 @@ public function insert() {
 		//执行上传
 		$status = $this->upload->do_upload("thumb_bilder");
 		if($status) {
-			echo "<script>alert('Success zu upload');setTimeout(function(){
+			echo "<script>setTimeout(function(){
 				location.replace(document.referrer);
 			},300);</script>";
 		} else {
 //			p($this->upload->display_errors());
-			echo "<script>alert('Error bei upload');setTimeout(function(){
+			echo "<script>setTimeout(function(){
 				location.replace(document.referrer);
 			},300);</script>";
 		}

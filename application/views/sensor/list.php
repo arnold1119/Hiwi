@@ -123,7 +123,7 @@
         <td><span><?php echo $value['position']; ?></span></td>
         
         <td>
-            <a href="<?php echo site_url('sensor/edit/'.$value['s_id']) ?>">
+            <a href="<?php echo site_url('sensor/sensorinfo/'.$value['s_id']) ?>">
                 <!-- <button type="btn">
                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                 </button> -->
