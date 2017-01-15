@@ -751,7 +751,9 @@ $(function() {
 				<div class='col-xs-2'>
 						<input type='hidden' name='fahrzeugen_id[]' value="<?php echo $value['fz_id']; ?>">auto[<?php echo $key+1;?>]
 				</div>
-				<div class='col-xs-7'><?php echo $value['fahrzeugname'] ?></div>
+				<div class='col-xs-7'><?php echo $value['fahrzeugname'] ?>
+					[<?php echo $value['baujahr']; ?>]
+				</div>
 				<div class='col-xs-3'>
 					<a href='javascript:' onclick='del(this,auto)'>
 						<button type='button' class='btn btn-default'>

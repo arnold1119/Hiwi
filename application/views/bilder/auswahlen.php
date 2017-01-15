@@ -7,9 +7,11 @@
 <div id="search" class="w900">
 <h4>Bilder auf dem Server auswählen</h4>
 <br>	
+
 <table class="table table-striped">
 <tr class="active">
     <td> <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></td>
+<?php if($page=='Bilder'): ?>
     <td>Hochladen neue Bilder </td>
     <form action="<?php echo site_url('bilder/bilder_upload'); ?>" method="post"  enctype="multipart/form-data">
 
@@ -34,6 +36,58 @@
         
     </td>
     </form>
+<?php elseif($page=="Dokumente"): ?>
+	<td>Hochladen neue DoKumente </td>
+    <form action="<?php echo site_url('bilder/file_upload'); ?>" method="post"  enctype="multipart/form-data">
+
+            <td>
+            	
+            	
+            	
+            	<input type="file" name="thumb_bilder" size="20"/>
+            </td>
+    
+    <td>
+    	
+    	
+            <!-- <button type="btn">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+            </button> -->
+
+            
+        	<input type="submit" value="upload"/>
+    		
+    	
+        
+    </td>
+    </form>
+<?php else: ?>
+	<td>Hochladen neue Video </td>
+    <form action="<?php echo site_url('bilder/videos_upload'); ?>" method="post"  enctype="multipart/form-data">
+
+            <td>
+            	
+            	
+            	
+            	<input type="file" name="thumb_bilder" size="20"/>
+            </td>
+    
+    <td>
+    	
+    	
+            <!-- <button type="btn">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+            </button> -->
+
+            
+        	<input type="submit" value="upload"/>
+    		
+    	
+        
+    </td>
+    </form>
+	
+<?php endif;?>
 </tr>
 
 
@@ -68,7 +122,7 @@
         <td>
         	
 
-            <a href='<?php echo site_url("bilder/dir_open?dirOpen="."$value") ?>'>
+            <a href='<?php echo site_url("bilder/dir_open?dirOpen="."$value".'&u='.$url); ?>'>
                 <button type="button" class="btn btn-default">
                     <span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>
                 </button>
@@ -221,7 +275,7 @@ elseif(pathinfo($value)['extension']=='jpg'||pathinfo($value)['extension']=='jpe
          <!--<td><span><?php echo $value['datum']; ?></span></td>-->
         <td>
         	
-            <a href='<?php echo site_url("bilder/link?link=".urlencode($value)) ?>'>
+            <a href='<?php echo site_url("bilder/videos_link?link=".urlencode($value).'&u='.$url); ?>'>
                 <button type="button" class="btn btn-default">
                     <span class="glyphicon glyphicon-link" aria-hidden="true"></span>
                 </button>

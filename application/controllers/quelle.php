@@ -53,7 +53,7 @@ class Quelle extends CI_Controller{
 					if($index) {
 	                	$this->bilder->Session_file_null();
 	                	$this->bilder->Session_vorfile_null();
-	                    success("quelle/index/$index","Add Quelle Success!!");
+	                    $this->index();
 	                } else{
 	                    error("insert feler");
 	                }
@@ -68,9 +68,20 @@ class Quelle extends CI_Controller{
             	
 //			$file = $this->bilder->Session_get_file()[0];
             $_SESSION['quellenname'] = $this->input->get("quelle");
+            
+//          p(urldecode($this->input->get("quelle")));
+            $t = pathinfo($this->input->get("quelle"));
+//          p($t);
+            if($t['extension']=='mp4') {
+            	$data['type'] = 1;
+            } else{
+            	$data['type'] = 0;
+            }
+            	
 	        if($_SESSION['quellenname']) {
 				
 				$data['status'] = 1;
+				
 			} else{
 				
 				$data['status'] = 0;
@@ -78,6 +89,8 @@ class Quelle extends CI_Controller{
 			}
             	
             	$data['url'] = uri_string();
+            	
+	
                 $this->load->view("quelle/insert",$data);
             }
             // $this->load->view("hersteller/insert");
@@ -129,7 +142,7 @@ class Quelle extends CI_Controller{
                 
                 if($quelle_get) {
                 	$quellenname = $quelle_get;
-                	$link = "http://fasdb.iffhz.ing.tu-bs.de/edit/quelle/Dokumente";
+                	$link = "fasdb.iffhz.ing.tu-bs.de/quellen/Dokumente";
                 }
                 
                 if($quellenname=="null") {

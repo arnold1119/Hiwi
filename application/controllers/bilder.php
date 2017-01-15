@@ -127,10 +127,6 @@ public function insert() {
 		$vor_bilder = $this->input->get("bilder");
 		$fz_id = $this->input->get("fz_id");
 		
-//		if($vor_bilder) {
-//			$this->fahrzeug->bilder_null_set($fz_id);
-//			$this->bilder->vorbilder_set($vor_bilder);
-//		}	
 		
 		$_SESSION['bilder'] = "null";
 		$_SESSION['bilder_id'] = "null";
@@ -143,6 +139,8 @@ public function insert() {
 //		p($this->session->get_userdata()['bilder']);
 		$data['url'] = $this->input->get("u");
 		$data['dirs'] = $dirs;
+		$tt = preg_split('/quellen\//',$dirs);
+		$data['page'] = $tt['1'];
 		$this->load->view("bilder/auswahlen",$data);
 		
 	}
@@ -152,6 +150,9 @@ public function insert() {
 	public function dir_open(){
 		
 		$dirs = $this->input->get("dirOpen");
+		$data['url'] = $this->input->get("u");
+//		$t = $_SERVER['QUERY_STRING'];
+//		p($t);
 
 		$this->auswahlen($dirs);
 	}
@@ -164,10 +165,6 @@ public function insert() {
 		},10);</script>";
 	}
 	public function txt_file_open($all){
-//		p($all);
-//		$dirs = $keywords[1];
-//		var_dump($keywords);
-//		$all = $this->input->get("s");
 		
 			$data["content"] = file_get_contents($all);
 			$data['name'] = basename($all);
@@ -278,13 +275,7 @@ public function insert() {
 //		p(base_url($u));	
 //		p($result);die;
 		$_SESSION['bilder'] = $result[1];
-//		$speicher = $this->bilder->Session_bilder_update($bilder);
-//		$result[0] = $this->bilder->Session_get_bilder();
-//		p($result);
-//		die;
-//		$result = preg_split("/edit/",$link);
-//p($_SESSION['bilder']); 
-//die;
+
 
 			echo "<script>
 				window.location.replace('".base_url('index.php/'.$u.'?bilder='.$_SESSION['bilder'])."');
@@ -355,12 +346,15 @@ public function insert() {
 		
 	}
 	
-	public function file_auswahlen($dirs = "/var/www/edit/quellen/Dokumente") {
+	public function file_auswahlen($dirs = "/var/www/edit/quellen") {
 		$gets = $this->input->get();		
 
 		$data['url'] = $this->input->get("u");
 
 		$data['dirs'] = $dirs;
+//		$t = pathinfo($dirs);
+//		p($t);
+//		die;
 		$this->load->view("bilder/file_auswahlen",$data);
 	}
 	
@@ -368,15 +362,36 @@ public function insert() {
 	public function file_link(){
 		
 		$link = $this->input->get("link");	
+//		p($link);
 		$u = $this->input->get("u");
 //		p($link);die;
 		$result = preg_split("/Dokumente\//",$link);
 //		p(base_url($u));	
 //		p($result);die;
+//die;
 		$_SESSION['quelle'] = $result[1];
 	
 			echo "<script>
 				window.location.replace('".base_url('index.php/'.$u.'?quelle='.$_SESSION['quelle'])."');
+			</script>";
+		
+	}
+	
+	public function videos_link(){
+		
+		$link = $this->input->get("link");	
+		
+		
+		$u = $this->input->get("u");
+//		p($link);die;
+		$result = preg_split("/Videos\//",$link);
+//		p($result);
+//		die;
+		$_SESSION['quelle'] = $result[1];
+		$type['extension'] = 'mp4';
+	
+			echo "<script>
+				window.location.replace('".base_url('index.php/'.$u.'?quelle='.urlencode($_SESSION['quelle']))."');
 			</script>";
 		
 	}
@@ -401,6 +416,31 @@ public function insert() {
 			echo "<script>setTimeout(function(){
 				location.replace(document.referrer);
 			},300);</script>";
+		}
+		
+		
+	}
+	
+	
+	public function videos_upload() {
+		$config['upload_path'] = './quellen/Videos/';
+		$config['allowed_types'] = '';
+		$config['max_size'] = '1000000000';
+		
+
+		//载入上传类
+		$this->load->library('upload', $config);
+		//执行上传
+		$status = $this->upload->do_upload("thumb_bilder");
+		if($status) {
+			echo "<script>setTimeout(function(){
+				location.replace(document.referrer);
+			},300);</script>";
+		} else {
+			p($this->upload->display_errors());
+			echo "<script>setTimeout(function(){
+				location.replace(document.referrer);
+			},30000);</script>";
 		}
 		
 		

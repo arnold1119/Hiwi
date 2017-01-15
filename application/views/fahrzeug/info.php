@@ -67,9 +67,10 @@
 </p>
 <?php endforeach; ?>
 <?php foreach($quelle as $key=>$value): ?>
+	<!--<?php p($value['link']); ?>-->
     <p class="text-left" style="text-indent: 15px">
     	<font style="margin-right: 15px;">link[<?php echo $key+1 ?>]:</font>
-    	<a href='http://<?php echo $result[0]["link"]; ?>' target='_blank' class="quelle_color"><?php echo $value["link"]; ?></a> </p>
+    	<a href='http://<?php echo $value['link']; ?>' target='_blank' class="quelle_color"><?php echo $value["link"]; ?></a> </p>
     <p class="text-left quelle_color" style="text-indent: 15px"><font style="margin-right: 15px;">quellenname:</font><?php echo $value["quellenname"]; ?> <time datetime='<?php echo $result[0]["quellenname"]; ?>'>[ <?php echo $value["datum"]; ?> ]</time></p>
 <?php endforeach; ?>
 

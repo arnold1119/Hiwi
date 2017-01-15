@@ -6,12 +6,15 @@
     <meta charset="UTF-8" />
     <title>Document</title>
 <?php $this->load->view("header"); ?>
+
 <div id="search" class="w900">
 <h4>Dokument auf dem Server auswählen</h4>
 <br>	
 <table class="table table-striped">
-<tr class="active">
+
+<!--<tr class="active">
     <td> <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></td>
+
     <td>Hochladen neues Dokument </td>
     <form action="<?php echo site_url('bilder/file_upload'); ?>" method="post"  enctype="multipart/form-data">
 
@@ -25,10 +28,7 @@
     <td>
     	
     	
-            <!-- <button type="btn">
-                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-            </button> -->
-
+           
             
         	<input type="submit" value="upload"/>
     		
@@ -36,7 +36,8 @@
         
     </td>
     </form>
-</tr>
+
+</tr>-->
 
 
 <!--!modal end-->
@@ -70,7 +71,7 @@
         <td>
         	
 
-            <a href='<?php echo site_url("bilder/dir_open?dirOpen="."$value") ?>'>
+            <a href='<?php echo site_url("bilder/dir_open?dirOpen="."$value".'&u='.$url) ?>'>
                 <button type="button" class="btn btn-default">
                     <span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>
                 </button>
@@ -209,7 +210,7 @@ elseif(pathinfo($value)['extension']=='jpg'||pathinfo($value)['extension']=='jpe
     <tr class="ajax_text">
       
         <td>
-            <a href='<?php echo site_url("bilder/file_open?fileOpen=".urlencode($value)) ?>'>
+            <a href='<?php echo site_url("bilder/file_open?fileOpen=".urlencode($value)); ?>'>
 				<span class="glyphicon glyphicon-facetime-video" aria-hidden="true" style=""></span>
 			</a>  	
         </td>
@@ -223,7 +224,7 @@ elseif(pathinfo($value)['extension']=='jpg'||pathinfo($value)['extension']=='jpe
          <!--<td><span><?php echo $value['datum']; ?></span></td>-->
         <td>
         	
-            <a href='<?php echo site_url("bilder/link?link=".urlencode($value)) ?>'>
+            <a href='<?php echo site_url("bilder/videos_link?link=".urlencode($value).'&u='.$url) ?>'>
                 <button type="button" class="btn btn-default">
                     <span class="glyphicon glyphicon-link" aria-hidden="true"></span>
                 </button>

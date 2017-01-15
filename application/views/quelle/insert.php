@@ -52,7 +52,7 @@
     </div>
     <div class="col-xs-6">
         <!-- <input type="text" class="form-control" value=""> -->
-        <textarea class="form-control" rows="3" name="link" cols="50"><?php if($status): ?>http://fasdb.iffhz.ing.tu-bs.de/edit/quelle/Dokumente<?php endif; ?></textarea>
+        <textarea class="form-control" rows="3" name="link" cols="50"><?php if($status): ?><?php if(!$type):?>fasdb.iffhz.ing.tu-bs.de/quellen/Dokumente<?php else: ?>fasdb.iffhz.ing.tu-bs.de/quellen/Videos<?php endif; ?><?php endif; ?></textarea>
     </div>
     <div class="col-xs-4" style="text-align: right;">
     	<a href="<?php echo site_url('bilder/file_auswahlen?u='.$url); ?>">

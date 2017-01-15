@@ -800,7 +800,8 @@ public function waehrung() {
             $fas_id = $this->uri->segment(3);
         	$data['fas_id'] = $fas_id;
             $data['update'] = $this->fas->all_teil_such($fas_id);
-//p($data);die;
+//p($data);
+
             $data["quelle"] = $this->quelle->q_all();
             
             $data['mland'] = $this->land->m_select();

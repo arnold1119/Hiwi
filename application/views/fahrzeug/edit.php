@@ -28,6 +28,8 @@
 <div id="search">
 <h1>Auto</h1>
     <form class="form-inline" action="<?php echo site_url('fahrzeug/edit/'.$update['fahrzeug'][0]['fz_id']); ?>" method="post"  enctype="multipart/form-data">
+    <!--<form class="form-inline" action="<?php echo site_url('fahrzeug/edit/'.$update['fahrzeug'][0]['fz_id']); ?>" method="post"  enctype="multipart/form-data">-->
+    
     <input type="hidden" name="eingabe" value="<?php echo date("Y-m-d"); ?>">
     <input type="hidden" name="aenderung" value="<?php echo date("Y-m-d"); ?>">
 <br>
@@ -540,17 +542,25 @@ fasCou = $("input[name='all_fas_index']").val();
             
             </div>
             <div class="col-xs-3">
-                <input class="btn  btn-large btn-default" type="submit" value="speicher" name="true">
+                <!--<button class="btn  btn-large btn-default" onsubmit="return neue_speicher()">Speichern als neues Fahrzeug</button>-->
+            	
+                <input type="submit" value="speicher  " name="true" class="btn  btn-large btn-default" >
                 <!-- <input class="btn btn-large btn-default" type="submit" value="speicher" formaction="" name="true"> -->
                 <!-- <input class="btn btn-default" type="submit" value="Submit"> -->
+
+                <!--<input type="submit" value="peichern als neues Fahrzeug" name="true">-->
+    <form class="form-inline" action="<?php echo site_url('fahrzeug/edit/'.$update['fahrzeug'][0]['fz_id']); ?>" method="post"  enctype="multipart/form-data">
+                
+                <button class="btn  btn-large btn-default" formaction="<?php echo site_url('fahrzeug/speicher'); ?>">Speichern als neuesFahrzeug</button>
+				
+                
             </div>
         </div>
 <hr>
 
     </form>
 </div>
-    
-    
+
 
 </body>
 </html>
