@@ -37,12 +37,14 @@
 </datalist>
 
 <div id="search"  class="w80">
-	<h4>Klasse</h4>
+	<h4>Fahrzeugklasse</h4>
 <br>
+<?php echo $links; ?>
+	
 <table class="table table-striped">
 <tr class="active">
     <td> <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></td>
-    <td>Add new Klasse </td>
+    <td>Neue Fahrzeugklasse hinzufügen</td>
     <td>
         <a href="<?php echo site_url('klasse/insert'); ?>">
             <!-- <button type="btn">
@@ -58,21 +60,21 @@
 </tr>
 <tr class="title_line">
 	<td>klass_id
-		<a href="<?php echo site_url('fahrzeug/f_list_fa'); ?>">
+		<a href="<?php echo site_url('klasse/id_a'); ?>">
     		<span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
     		
     	</a>
-    	<a href="<?php echo site_url('fahrzeug/f_list_fd'); ?>">
+    	<a href="<?php echo site_url('klasse/id_d'); ?>">
     		
     		<span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span>
     	</a>
 	</td>
 	<td>Klass Name
-		<a href="<?php echo site_url('fahrzeug/f_list_fa'); ?>">
+		<a href="<?php echo site_url('klasse/name_a'); ?>">
     		<span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
     		
     	</a>
-    	<a href="<?php echo site_url('fahrzeug/f_list_fd'); ?>">
+    	<a href="<?php echo site_url('klasse/name_d'); ?>">
     		
     		<span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span>
     	</a>
@@ -80,17 +82,9 @@
 	<td>&nbsp;</td>
 </tr>
 <?php foreach($klasse as $value): ?>
-    <?php if($value['fzk_id'] == $k_index): ?>
-    <tr class="success"> 
-        <td>
-            <span><?php echo $value['fzk_id']; ?></span>
-            <span class="glyphicon glyphicon-saved" aria-hidden="true" style="color:green">
-            
-        </td>
-<?php else: ?>
     <tr class="class_out">
         <td><span><?php echo $value['fzk_id']; ?></span></td>
-<?php endif; ?>
+
         <td><span><?php echo $value['klasse']; ?></span></td>
         <?php if($value['fzk_id']!=0): ?>
         <td>
@@ -137,6 +131,6 @@
 	}
 </script>
 
-
+<?php echo $links; ?>
 </body>
 </html>

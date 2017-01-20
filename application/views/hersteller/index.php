@@ -35,9 +35,12 @@
         <option value="<?php echo $value['fahrzeugname']; ?>"></option>
     <?php endforeach; ?>
 </datalist>
+
 <div id="search"  class="w80">
 	<h4>Hersteller</h4>
 <br>
+	
+<?php echo $links; ?>
 <table class="table table-striped">
 <tr class="active">
     <td> <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></td>
@@ -107,24 +110,56 @@
     </td>
 </tr>
 <tr class="active">
-    <td> fzh_id</span></td>
-    <td>fahrzueghersteller_gruppe</td>
-    <td>land</td>
-    <td>herstellername</td>
+    <td> fzh_id
+    	<a href="<?php echo site_url('hersteller/h_list_fzha'); ?>">
+    		<span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
+    		
+    	</a>
+    	<a href="<?php echo site_url('hersteller/h_list_fzhd'); ?>">
+    		
+    		<span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span>
+    	</a>
+    
+    </td>
+    <td>fahrzueghersteller_gruppe
+    	<a href="<?php echo site_url('hersteller/h_list_gruppea'); ?>">
+    		<span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
+    		
+    	</a>
+    	<a href="<?php echo site_url('hersteller/h_list_grupped'); ?>">
+    		
+    		<span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span>
+    	</a>
+    </td>
+    
+    <td>land
+    	<a href="<?php echo site_url('hersteller/f_list_land_a'); ?>">
+    		<span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
+    		
+    	</a>
+    	<a href="<?php echo site_url('hersteller/f_list_land_d'); ?>">
+    		
+    		<span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span>
+    	</a>
+    </td>
+    <td>herstellername
+    	
+    	
+    	<a href="<?php echo site_url('hersteller/h_list_ida'); ?>">
+    		<span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
+    		
+    	</a>
+    	<a href="<?php echo site_url('hersteller/h_list_idd'); ?>">
+    		
+    		<span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span>
+    	</a>
+    </td>
     <td>&nbsp;</td>
 </tr>
 <?php foreach($hersteller as $value): ?>
-    <?php if($value['fzh_id'] == $hst_index): ?>
-    <tr class="success"> 
-        <td>
-            <span><?php echo $value['fzh_id']; ?></span>
-            <span class="glyphicon glyphicon-saved" aria-hidden="true" style="color:green">
-            
-        </td>
-<?php else: ?>
+    
     <tr class="class_out">
         <td><span><?php echo $value['fzh_id']; ?></span></td>
-<?php endif; ?>
         <td><span><?php echo $value['gruppenname']; ?></span></td>
         <td><span><?php echo $value['land']; ?></span></td>
         <td><span><?php echo $value['herstellername']; ?></span></td>
@@ -170,5 +205,6 @@
 		
 	}
 </script>
+<?php echo $links; ?>
 </body>
 </html>

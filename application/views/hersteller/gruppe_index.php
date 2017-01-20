@@ -8,6 +8,7 @@
 <div id="search"  class="w80">
 	<h4>HerstellerLand Gruppe</h4>
 <br>
+<?php echo $links; ?>
 <form action="<?php site_url('hersteller/gruppe_insert') ?>" method="post">
     <table class="table table-striped">
 <tr  class="row text">
@@ -27,7 +28,32 @@
                 </a>
     </td>
 </tr>
-
+<tr class="row text active">
+    <td> fzhg_id
+    	<a href="<?php echo site_url('hersteller/h_list_gruppe_ida'); ?>">
+    		<span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
+    		
+    	</a>
+    	<a href="<?php echo site_url('hersteller/h_list_gruppe_idd'); ?>">
+    		
+    		<span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span>
+    	</a>
+    
+    </td>
+    <td>gruppenname
+    	<a href="<?php echo site_url('hersteller/h_list_gruppename_a'); ?>">
+    		<span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
+    		
+    	</a>
+    	<a href="<?php echo site_url('hersteller/h_list_gruppename_d'); ?>">
+    		
+    		<span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span>
+    	</a>
+    </td>
+    
+    
+    <td>&nbsp;</td>
+</tr>
 <?php foreach($gruppes as $value): ?>
 <?php if($value['gruppenname'] =="Keine Angabe"): ?>
 
@@ -83,6 +109,6 @@
 		
 	}
 </script>
-
+		<?php echo $links; ?>
 </body>
 </html>

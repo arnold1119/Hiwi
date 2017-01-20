@@ -12,9 +12,26 @@ class Klasse_model extends CI_Model {
         return $this->db->order_by("klasse","")->get("Fahrzeugklasse")->result_array();
         // return $this->db->order_by('fzk_id','desc')->get("fahrzeugklasse")->result_array(); 
     }
-
+	public function k_select_ida() {
+        return $this->db->order_by('fzk_id','asc')->get("Fahrzeugklasse")->result_array();
+		
+	}
+	
+	public function k_select_idd() {
+        return $this->db->order_by('fzk_id','desc')->get("Fahrzeugklasse")->result_array();
+		
+	}
     public function k_select_d() {
         return $this->db->order_by('fzk_id','desc')->get("Fahrzeugklasse")->result_array();
+    }
+    
+    public function k_select_namea() {
+        return $this->db->order_by('klasse','asc')->get("Fahrzeugklasse")->result_array();
+    	
+    }
+     public function k_select_named() {
+        return $this->db->order_by('klasse','desc')->get("Fahrzeugklasse")->result_array();
+    	
     }
 
     public function k_get_one($array) {

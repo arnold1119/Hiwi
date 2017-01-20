@@ -16,7 +16,50 @@ class Hersteller_model extends CI_Model {
         join("Land","Fahrzeughersteller.land_id=Land.land_id")->get("Fahrzeughersteller")->result_array();
         return $data;
     }
-
+    public function hbinden_select_hersteller_a() {
+        $data = $this->db->join("Fahrzeughersteller_Gruppe","Fahrzeughersteller_Gruppe.fzhg_id=Fahrzeughersteller.fzhg_id")->
+        join("Land","Fahrzeughersteller.land_id=Land.land_id")->order_by("herstellername","asc")->get("Fahrzeughersteller")->result_array();
+        return $data;
+    }
+    public function hbinden_select_hersteller_b() {
+        $data = $this->db->join("Fahrzeughersteller_Gruppe","Fahrzeughersteller_Gruppe.fzhg_id=Fahrzeughersteller.fzhg_id")->
+        join("Land","Fahrzeughersteller.land_id=Land.land_id")->order_by("herstellername","desc")->get("Fahrzeughersteller")->result_array();
+        return $data;
+    }
+	public function hbinden_select_hersteller_fzhb(){
+		$data = $this->db->join("Fahrzeughersteller_Gruppe","Fahrzeughersteller_Gruppe.fzhg_id=Fahrzeughersteller.fzhg_id")->
+        join("Land","Fahrzeughersteller.land_id=Land.land_id")->order_by("fzh_id","desc")->get("Fahrzeughersteller")->result_array();
+        return $data;
+	}
+	public function hbinden_select_hersteller_fzha(){
+		$data = $this->db->join("Fahrzeughersteller_Gruppe","Fahrzeughersteller_Gruppe.fzhg_id=Fahrzeughersteller.fzhg_id")->
+        join("Land","Fahrzeughersteller.land_id=Land.land_id")->order_by("fzh_id","asc")->get("Fahrzeughersteller")->result_array();
+        return $data;
+	}
+	
+	public function hbinden_select_gruppe_a() {
+		$data = $this->db->join("Fahrzeughersteller_Gruppe","Fahrzeughersteller_Gruppe.fzhg_id=Fahrzeughersteller.fzhg_id")->
+        join("Land","Fahrzeughersteller.land_id=Land.land_id")->order_by("gruppenname","asc")->get("Fahrzeughersteller")->result_array();
+        return $data;
+	}
+	
+	public function hbinden_select_gruppe_d() {
+		$data = $this->db->join("Fahrzeughersteller_Gruppe","Fahrzeughersteller_Gruppe.fzhg_id=Fahrzeughersteller.fzhg_id")->
+        join("Land","Fahrzeughersteller.land_id=Land.land_id")->order_by("gruppenname","desc")->get("Fahrzeughersteller")->result_array();
+        return $data;
+	}
+	
+	public function hbinden_select_land_a() {
+		$data = $this->db->join("Fahrzeughersteller_Gruppe","Fahrzeughersteller_Gruppe.fzhg_id=Fahrzeughersteller.fzhg_id")->
+        join("Land","Fahrzeughersteller.land_id=Land.land_id")->order_by("land","asc")->get("Fahrzeughersteller")->result_array();
+        return $data;
+	}
+	
+	public function hbinden_select_land_d() {
+		$data = $this->db->join("Fahrzeughersteller_Gruppe","Fahrzeughersteller_Gruppe.fzhg_id=Fahrzeughersteller.fzhg_id")->
+        join("Land","Fahrzeughersteller.land_id=Land.land_id")->order_by("land","desc")->get("Fahrzeughersteller")->result_array();
+        return $data;
+	}
 
 /**
  * verbing Fahrzeughersteller , fahrzeughersteller_gruppe und land

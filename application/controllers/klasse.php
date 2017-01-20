@@ -13,18 +13,157 @@ class Klasse extends CI_Controller{
     }
 
     public function index() {
-        if($this->uri->segment(3)) {
-            $data['k_index'] = $this->uri->segment(3);
-        } else{
-            $data['k_index'] = -1;
-        }
-		$data['fahrzeug'] = $this->fahrzeug->f_all(); 
+//		$data['fahrzeug'] = $this->fahrzeug->f_all(); 
+//		$data['hersteller'] = $this->h->h_select();
+//      $data['klasse'] = $this->k->k_select();
+//      $this->load->view("klasse/index",$data);
+		$this->id_a();
+    }
+    
+    public function id_a() {
+    	$data['fahrzeug'] = $this->fahrzeug->f_all(); 
 		$data['hersteller'] = $this->h->h_select();
-        $data['klasse'] = $this->k->k_select();
-        // p($data);die;
-        // $this->load->view("header");
-//      p($data['klasse']);
-        $this->load->view("klasse/index",$data);
+        $data['klasse'] = $this->k->k_select_ida();
+		
+//	    $index = $this->uri->segment(3);
+//	    if($index != -1) {
+//	        $data['hst_index'] = $index;
+//	    } else{
+//	        $data['hst_index'] = -1;
+//	    }
+		$this->load->library("pagination");
+		$perpage = 20;
+		
+	    
+	//	$config['anchor_class'] = "page_page";
+		$config['base_url'] = site_url("hersteller/id_a");
+		$config['total_rows'] = count($this->k->k_select_ida());
+	//		p($config['total_rows']);
+	//		p(count($this->fahrzeug->bind_table_herstellername_a()));
+		$config['per_page'] = $perpage;
+		$config['uri_segment'] = 3;
+		
+		$this->pagination->initialize($config);
+		
+		$data["links"] = $this->pagination->create_links();
+	
+		$offset = $this->uri->segment(3);
+		$this->db->limit($perpage, $offset);
+		
+		$data['seite_all'] = floor($config['total_rows']/$perpage);
+	//	p($data['seite_all']);
+        $data['klasse'] = $this->k->k_select_ida();
+		
+	    $this->load->view("klasse/index",$data);    
+   	}
+   	 public function id_d() {
+    	$data['fahrzeug'] = $this->fahrzeug->f_all(); 
+		$data['herstellerfilter'] = $this->h->h_select();
+        $data['klasse'] = $this->k->k_select_idd();
+		
+//	    $index = $this->uri->segment(3);
+//	    if($index != -1) {
+//	        $data['hst_index'] = $index;
+//	    } else{
+//	        $data['hst_index'] = -1;
+//	    }
+		$this->load->library("pagination");
+		$perpage = 20;
+		
+	    
+	//	$config['anchor_class'] = "page_page";
+		$config['base_url'] = site_url("hersteller/id_d");
+		$config['total_rows'] = count($this->k->k_select_idd());
+	//		p($config['total_rows']);
+	//		p(count($this->fahrzeug->bind_table_herstellername_a()));
+		$config['per_page'] = $perpage;
+		$config['uri_segment'] = 3;
+		
+		$this->pagination->initialize($config);
+		
+		$data["links"] = $this->pagination->create_links();
+	
+		$offset = $this->uri->segment(3);
+		$this->db->limit($perpage, $offset);
+		
+		$data['seite_all'] = floor($config['total_rows']/$perpage);
+	//	p($data['seite_all']);
+        $data['klasse'] = $this->k->k_select_idd();
+		
+	    $this->load->view("klasse/index",$data); 
+    }
+    public function name_a() {
+    	$data['fahrzeug'] = $this->fahrzeug->f_all(); 
+		$data['hersteller'] = $this->h->h_select();
+        $data['klasse'] = $this->k->k_select_namea();
+		
+//	    $index = $this->uri->segment(3);
+//	    if($index != -1) {
+//	        $data['hst_index'] = $index;
+//	    } else{
+//	        $data['hst_index'] = -1;
+//	    }
+		$this->load->library("pagination");
+		$perpage = 20;
+		
+	    
+	//	$config['anchor_class'] = "page_page";
+		$config['base_url'] = site_url("hersteller/name_a");
+		$config['total_rows'] = count($this->k->k_select_namea());
+	//		p($config['total_rows']);
+	//		p(count($this->fahrzeug->bind_table_herstellername_a()));
+		$config['per_page'] = $perpage;
+		$config['uri_segment'] = 3;
+		
+		$this->pagination->initialize($config);
+		
+		$data["links"] = $this->pagination->create_links();
+	
+		$offset = $this->uri->segment(3);
+		$this->db->limit($perpage, $offset);
+		
+		$data['seite_all'] = floor($config['total_rows']/$perpage);
+	//	p($data['seite_all']);
+        $data['klasse'] = $this->k->k_select_namea();
+		
+	    $this->load->view("klasse/index",$data); 
+    }
+   
+    public function name_d() {
+    	$data['fahrzeug'] = $this->fahrzeug->f_all(); 
+		$data['hersteller'] = $this->h->h_select();
+        $data['klasse'] = $this->k->k_select_named();
+		
+//	    $index = $this->uri->segment(3);
+//	    if($index != -1) {
+//	        $data['hst_index'] = $index;
+//	    } else{
+//	        $data['hst_index'] = -1;
+//	    }
+		$this->load->library("pagination");
+		$perpage = 20;
+		
+	    
+	//	$config['anchor_class'] = "page_page";
+		$config['base_url'] = site_url("hersteller/name_d");
+		$config['total_rows'] = count($this->k->k_select_named());
+	//		p($config['total_rows']);
+	//		p(count($this->fahrzeug->bind_table_herstellername_a()));
+		$config['per_page'] = $perpage;
+		$config['uri_segment'] = 3;
+		
+		$this->pagination->initialize($config);
+		
+		$data["links"] = $this->pagination->create_links();
+	
+		$offset = $this->uri->segment(3);
+		$this->db->limit($perpage, $offset);
+		
+		$data['seite_all'] = floor($config['total_rows']/$perpage);
+	//	p($data['seite_all']);
+        $data['klasse'] = $this->k->k_select_named();
+		
+	    $this->load->view("klasse/index",$data); 
     }
 
 

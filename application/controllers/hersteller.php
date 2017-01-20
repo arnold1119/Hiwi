@@ -13,17 +13,288 @@ class Hersteller extends CI_Controller{
 
 
     public function index() {
+    	$this->h_list_ida();
+    }
+    
+    public function h_list_ida() {
+		$data['fahrzeugfilter'] = $this->fahrzeug->f_all(); 
+		$data['herstellerfilter'] = $this->hst->h_select();
+		$data['hersteller'] = $this->hst->hbinden_select_hersteller_a();
+	    $index = $this->uri->segment(3);
+	    if($index != -1) {
+	        $data['hst_index'] = $index;
+	    } else{
+	        $data['hst_index'] = -1;
+	    }
+		$this->load->library("pagination");
+		$perpage = 20;
+		
+	    
+	//	$config['anchor_class'] = "page_page";
+		$config['base_url'] = site_url("hersteller/h_list_ida");
+		$config['total_rows'] = count($this->hst->hbinden_select_hersteller_a());
+	//		p($config['total_rows']);
+	//		p(count($this->fahrzeug->bind_table_herstellername_a()));
+		$config['per_page'] = $perpage;
+		$config['uri_segment'] = 3;
+		
+		$this->pagination->initialize($config);
+		
+		$data["links"] = $this->pagination->create_links();
+	
+		$offset = $this->uri->segment(3);
+		$this->db->limit($perpage, $offset);
+		
+		$data['seite_all'] = floor($config['total_rows']/$perpage);
+	//	p($data['seite_all']);
+		$data['hersteller'] = $this->hst->hbinden_select_hersteller_a();
+	    $this->load->view("hersteller/index",$data);
+	}
+    
+    public function h_list_idd() {
+		$data['fahrzeugfilter'] = $this->fahrzeug->f_all(); 
+		$data['herstellerfilter'] = $this->hst->h_select();
+		$data['hersteller'] = $this->hst->hbinden_select_hersteller_b();
+	    $index = $this->uri->segment(3);
+	    if($index != -1) {
+	        $data['hst_index'] = $index;
+	    } else{
+	        $data['hst_index'] = -1;
+	    }
+		$this->load->library("pagination");
+		$perpage = 20;
+		
+	    
+	//	$config['anchor_class'] = "page_page";
+		$config['base_url'] = site_url("hersteller/h_list_idd");
+		$config['total_rows'] = count($this->hst->hbinden_select_hersteller_b());
+	//		p($config['total_rows']);
+	//		p(count($this->fahrzeug->bind_table_herstellername_a()));
+		$config['per_page'] = $perpage;
+		$config['uri_segment'] = 3;
+		
+		$this->pagination->initialize($config);
+		
+		$data["links"] = $this->pagination->create_links();
+	
+		$offset = $this->uri->segment(3);
+		$this->db->limit($perpage, $offset);
+		
+		$data['seite_all'] = floor($config['total_rows']/$perpage);
+	//	p($data['seite_all']);
+		$data['hersteller'] = $this->hst->hbinden_select_hersteller_b();
+	    $this->load->view("hersteller/index",$data);
+	}
+	
+	public function h_list_fzhd() {
+		$data['fahrzeugfilter'] = $this->fahrzeug->f_all(); 
+		$data['herstellerfilter'] = $this->hst->h_select();
+		$data['hersteller'] = $this->hst->hbinden_select_hersteller_fzhb();
+	    $index = $this->uri->segment(3);
+	    if($index != -1) {
+	        $data['hst_index'] = $index;
+	    } else{
+	        $data['hst_index'] = -1;
+	    }
+		$this->load->library("pagination");
+		$perpage = 20;
+		
+	    
+	//	$config['anchor_class'] = "page_page";
+		$config['base_url'] = site_url("hersteller/h_list_fzhd");
+		$config['total_rows'] = count($this->hst->hbinden_select_hersteller_fzhb());
+	//		p($config['total_rows']);
+	//		p(count($this->fahrzeug->bind_table_herstellername_a()));
+		$config['per_page'] = $perpage;
+		$config['uri_segment'] = 3;
+		
+		$this->pagination->initialize($config);
+		
+		$data["links"] = $this->pagination->create_links();
+	
+		$offset = $this->uri->segment(3);
+		$this->db->limit($perpage, $offset);
+		
+		$data['seite_all'] = floor($config['total_rows']/$perpage);
+	//	p($data['seite_all']);
+		$data['hersteller'] = $this->hst->hbinden_select_hersteller_fzhb();
+	    $this->load->view("hersteller/index",$data);
+	}
+	
+	public function h_list_fzha() {
+		$data['fahrzeugfilter'] = $this->fahrzeug->f_all(); 
+		$data['herstellerfilter'] = $this->hst->h_select();
+		$data['hersteller'] = $this->hst->hbinden_select_hersteller_fzha();
+	    $index = $this->uri->segment(3);
+	    if($index != -1) {
+	        $data['hst_index'] = $index;
+	    } else{
+	        $data['hst_index'] = -1;
+	    }
+		$this->load->library("pagination");
+		$perpage = 20;
+		
+	    
+	//	$config['anchor_class'] = "page_page";
+		$config['base_url'] = site_url("hersteller/h_list_fzha");
+		$config['total_rows'] = count($this->hst->hbinden_select_hersteller_fzha());
+	//		p($config['total_rows']);
+	//		p(count($this->fahrzeug->bind_table_herstellername_a()));
+		$config['per_page'] = $perpage;
+		$config['uri_segment'] = 3;
+		
+		$this->pagination->initialize($config);
+		
+		$data["links"] = $this->pagination->create_links();
+	
+		$offset = $this->uri->segment(3);
+		$this->db->limit($perpage, $offset);
+		
+		$data['seite_all'] = floor($config['total_rows']/$perpage);
+	//	p($data['seite_all']);
+		$data['hersteller'] = $this->hst->hbinden_select_hersteller_fzha();
+	    $this->load->view("hersteller/index",$data);
+	}
+	
+	public function h_list_gruppea() {
+		$data['fahrzeugfilter'] = $this->fahrzeug->f_all(); 
+		$data['herstellerfilter'] = $this->hst->h_select();
+		$data['hersteller'] = $this->hst->hbinden_select_gruppe_a();
+	    $index = $this->uri->segment(3);
+	    if($index != -1) {
+	        $data['hst_index'] = $index;
+	    } else{
+	        $data['hst_index'] = -1;
+	    }
+		$this->load->library("pagination");
+		$perpage = 20;
+		
+	    
+	//	$config['anchor_class'] = "page_page";
+		$config['base_url'] = site_url("hersteller/h_list_gruppea");
+		$config['total_rows'] = count($this->hst->hbinden_select_gruppe_a());
+	//		p($config['total_rows']);
+	//		p(count($this->fahrzeug->bind_table_herstellername_a()));
+		$config['per_page'] = $perpage;
+		$config['uri_segment'] = 3;
+		
+		$this->pagination->initialize($config);
+		
+		$data["links"] = $this->pagination->create_links();
+	
+		$offset = $this->uri->segment(3);
+		$this->db->limit($perpage, $offset);
+		
+		$data['seite_all'] = floor($config['total_rows']/$perpage);
+	//	p($data['seite_all']);
+		$data['hersteller'] = $this->hst->hbinden_select_gruppe_a();
+	    $this->load->view("hersteller/index",$data);
+	}
+	
+	public function h_list_grupped() {
+		$data['fahrzeugfilter'] = $this->fahrzeug->f_all(); 
+		$data['herstellerfilter'] = $this->hst->h_select();
+		$data['hersteller'] = $this->hst->hbinden_select_gruppe_d();
+	    $index = $this->uri->segment(3);
+	    if($index != -1) {
+	        $data['hst_index'] = $index;
+	    } else{
+	        $data['hst_index'] = -1;
+	    }
+		$this->load->library("pagination");
+		$perpage = 20;
+		
+	    
+	//	$config['anchor_class'] = "page_page";
+		$config['base_url'] = site_url("hersteller/h_list_grupped");
+		$config['total_rows'] = count($this->hst->hbinden_select_gruppe_d());
+	//		p($config['total_rows']);
+	//		p(count($this->fahrzeug->bind_table_herstellername_a()));
+		$config['per_page'] = $perpage;
+		$config['uri_segment'] = 3;
+		
+		$this->pagination->initialize($config);
+		
+		$data["links"] = $this->pagination->create_links();
+	
+		$offset = $this->uri->segment(3);
+		$this->db->limit($perpage, $offset);
+		
+		$data['seite_all'] = floor($config['total_rows']/$perpage);
+	//	p($data['seite_all']);
+		$data['hersteller'] = $this->hst->hbinden_select_gruppe_d();
+	    $this->load->view("hersteller/index",$data);
+	}
+	
+	public function f_list_land_a() {
+		$data['fahrzeugfilter'] = $this->fahrzeug->f_all(); 
+		$data['herstellerfilter'] = $this->hst->h_select();
+		$data['hersteller'] = $this->hst->hbinden_select_land_a();
+	    $index = $this->uri->segment(3);
+	    if($index != -1) {
+	        $data['hst_index'] = $index;
+	    } else{
+	        $data['hst_index'] = -1;
+	    }
+		$this->load->library("pagination");
+		$perpage = 20;
+		
+	    
+	//	$config['anchor_class'] = "page_page";
+		$config['base_url'] = site_url("hersteller/f_list_land_a");
+		$config['total_rows'] = count($this->hst->hbinden_select_land_a());
+	//		p($config['total_rows']);
+	//		p(count($this->fahrzeug->bind_table_herstellername_a()));
+		$config['per_page'] = $perpage;
+		$config['uri_segment'] = 3;
+		
+		$this->pagination->initialize($config);
+		
+		$data["links"] = $this->pagination->create_links();
+	
+		$offset = $this->uri->segment(3);
+		$this->db->limit($perpage, $offset);
+		
+		$data['seite_all'] = floor($config['total_rows']/$perpage);
+	//	p($data['seite_all']);
+		$data['hersteller'] = $this->hst->hbinden_select_land_a();
+	    $this->load->view("hersteller/index",$data);
+	}
+    
+    
+    public function f_list_land_d() {
     	$data['fahrzeugfilter'] = $this->fahrzeug->f_all(); 
 		$data['herstellerfilter'] = $this->hst->h_select();
-        $index = $this->uri->segment(3);
-        if($index != -1) {
-            $data['hst_index'] = $index;
-        } else{
-            $data['hst_index'] = -1;
-        }
-        $data['hersteller'] = $this->hst->hbinden_select();
-//         p($data['hersteller']);
-        $this->load->view("hersteller/index",$data);
+		$data['hersteller'] = $this->hst->hbinden_select_land_d();
+	    $index = $this->uri->segment(3);
+	    if($index != -1) {
+	        $data['hst_index'] = $index;
+	    } else{
+	        $data['hst_index'] = -1;
+	    }
+		$this->load->library("pagination");
+		$perpage = 20;
+		
+	    
+	//	$config['anchor_class'] = "page_page";
+		$config['base_url'] = site_url("hersteller/f_list_land_d");
+		$config['total_rows'] = count($this->hst->hbinden_select_land_d());
+	//		p($config['total_rows']);
+	//		p(count($this->fahrzeug->bind_table_herstellername_a()));
+		$config['per_page'] = $perpage;
+		$config['uri_segment'] = 3;
+		
+		$this->pagination->initialize($config);
+		
+		$data["links"] = $this->pagination->create_links();
+	
+		$offset = $this->uri->segment(3);
+		$this->db->limit($perpage, $offset);
+		
+		$data['seite_all'] = floor($config['total_rows']/$perpage);
+	//	p($data['seite_all']);
+		$data['hersteller'] = $this->hst->hbinden_select_land_d();
+	    $this->load->view("hersteller/index",$data);
     }
 
 /**
@@ -139,8 +410,148 @@ $data['fahrzeugfilter'] = $this->fahrzeug->f_all();
 	
 	public function gruppe_index() {
 		$data['gruppes'] = $this->hstg->hg_select();
-//		p($data);
+		p($data);
 		$this->load->view("hersteller/gruppe_index",$data);
+	}
+	
+	public function h_list_gruppename_a() {
+		$data['fahrzeugfilter'] = $this->fahrzeug->f_all(); 
+		$data['herstellerfilter'] = $this->hst->h_select();
+		$data['gruppes'] = $this->hstg->hbinden_select_gruppename_a();
+	    $index = $this->uri->segment(3);
+	    if($index != -1) {
+	        $data['hst_index'] = $index;
+	    } else{
+	        $data['hst_index'] = -1;
+	    }
+		$this->load->library("pagination");
+		$perpage = 20;
+		
+	    
+	//	$config['anchor_class'] = "page_page";
+		$config['base_url'] = site_url("hersteller/h_list_gruppename_a");
+		$config['total_rows'] = count($this->hstg->hbinden_select_gruppename_a());
+	//		p($config['total_rows']);
+	//		p(count($this->fahrzeug->bind_table_herstellername_a()));
+		$config['per_page'] = $perpage;
+		$config['uri_segment'] = 3;
+		
+		$this->pagination->initialize($config);
+		
+		$data["links"] = $this->pagination->create_links();
+	
+		$offset = $this->uri->segment(3);
+		$this->db->limit($perpage, $offset);
+		
+		$data['seite_all'] = floor($config['total_rows']/$perpage);
+	//	p($data['seite_all']);
+		$data['gruppes'] = $this->hstg->hbinden_select_gruppename_a();
+	    $this->load->view("hersteller/gruppe_index",$data);
+	}
+	
+	public function h_list_gruppename_d() {
+		$data['fahrzeugfilter'] = $this->fahrzeug->f_all(); 
+		$data['herstellerfilter'] = $this->hst->h_select();
+		$data['gruppes'] = $this->hstg->hbinden_select_gruppename_b();
+	    $index = $this->uri->segment(3);
+	    if($index != -1) {
+	        $data['hst_index'] = $index;
+	    } else{
+	        $data['hst_index'] = -1;
+	    }
+		$this->load->library("pagination");
+		$perpage = 20;
+		
+	    
+	//	$config['anchor_class'] = "page_page";
+		$config['base_url'] = site_url("hersteller/h_list_gruppename_d");
+		$config['total_rows'] = count($this->hstg->hbinden_select_gruppename_b());
+	//		p($config['total_rows']);
+	//		p(count($this->fahrzeug->bind_table_herstellername_a()));
+		$config['per_page'] = $perpage;
+		$config['uri_segment'] = 3;
+		
+		$this->pagination->initialize($config);
+		
+		$data["links"] = $this->pagination->create_links();
+	
+		$offset = $this->uri->segment(3);
+		$this->db->limit($perpage, $offset);
+		
+		$data['seite_all'] = floor($config['total_rows']/$perpage);
+	//	p($data['seite_all']);
+		$data['gruppes'] = $this->hstg->hbinden_select_gruppename_b();
+	    $this->load->view("hersteller/gruppe_index",$data);
+	}
+	
+	public function h_list_gruppe_ida() {
+		$data['fahrzeugfilter'] = $this->fahrzeug->f_all(); 
+		$data['herstellerfilter'] = $this->hst->h_select();
+		$data['gruppes'] = $this->hstg->hbinden_select_fzhg_a();
+	    $index = $this->uri->segment(3);
+	    if($index != -1) {
+	        $data['hst_index'] = $index;
+	    } else{
+	        $data['hst_index'] = -1;
+	    }
+		$this->load->library("pagination");
+		$perpage = 20;
+		
+	    
+	//	$config['anchor_class'] = "page_page";
+		$config['base_url'] = site_url("hersteller/h_list_gruppe_ida");
+		$config['total_rows'] = count($this->hstg->hbinden_select_fzhg_a());
+	//		p($config['total_rows']);
+	//		p(count($this->fahrzeug->bind_table_herstellername_a()));
+		$config['per_page'] = $perpage;
+		$config['uri_segment'] = 3;
+		
+		$this->pagination->initialize($config);
+		
+		$data["links"] = $this->pagination->create_links();
+	
+		$offset = $this->uri->segment(3);
+		$this->db->limit($perpage, $offset);
+		
+		$data['seite_all'] = floor($config['total_rows']/$perpage);
+	//	p($data['seite_all']);
+		$data['gruppes'] = $this->hstg->hbinden_select_fzhg_a();
+	    $this->load->view("hersteller/gruppe_index",$data);
+	}
+	
+	public function h_list_gruppe_idd() {
+		$data['fahrzeugfilter'] = $this->fahrzeug->f_all(); 
+		$data['herstellerfilter'] = $this->hst->h_select();
+		$data['gruppes'] = $this->hstg->hbinden_select_fzhg_d();
+	    $index = $this->uri->segment(3);
+	    if($index != -1) {
+	        $data['hst_index'] = $index;
+	    } else{
+	        $data['hst_index'] = -1;
+	    }
+		$this->load->library("pagination");
+		$perpage = 20;
+		
+	    
+	//	$config['anchor_class'] = "page_page";
+		$config['base_url'] = site_url("hersteller/h_list_gruppe_idd");
+		$config['total_rows'] = count($this->hstg->hbinden_select_fzhg_d());
+	//		p($config['total_rows']);
+	//		p(count($this->fahrzeug->bind_table_herstellername_a()));
+		$config['per_page'] = $perpage;
+		$config['uri_segment'] = 3;
+		
+		$this->pagination->initialize($config);
+		
+		$data["links"] = $this->pagination->create_links();
+	
+		$offset = $this->uri->segment(3);
+		$this->db->limit($perpage, $offset);
+		
+		$data['seite_all'] = floor($config['total_rows']/$perpage);
+	//	p($data['seite_all']);
+		$data['gruppes'] = $this->hstg->hbinden_select_fzhg_d();
+	    $this->load->view("hersteller/gruppe_index",$data);
 	}
 	
 	public function gruppe_insert() {
@@ -192,6 +603,8 @@ $data['fahrzeugfilter'] = $this->fahrzeug->f_all();
 		}
 		echo json_encode($data);
 	}
+	
+	
 	
 	
 	

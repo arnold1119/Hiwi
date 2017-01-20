@@ -8,22 +8,154 @@ class Land extends CI_Controller {
         parent::__construct();
 
         $this->load->model("land_model","land");
+        $this->load->model("fahrzeug_model",'fahrzeug');
+        $this->load->model("hersteller_model",'hst');
     }
 
 
     public function index() {
-        $land_index = $this->uri->segment(3);
-
-        if($land_index) {
-            $data['land_index'] = $land_index;
-        } else{
-            $data['land_index'] = 0;
-        }
-        $data["land"] = $this->land->l_select();
-        // p($data);die;
-        $this->load->view("land/index",$data);
+        $this->l_list_ida();
     }
 
+
+	public function l_list_ida() {
+		$data['fahrzeugfilter'] = $this->fahrzeug->f_all(); 
+		$data['herstellerfilter'] = $this->hst->h_select();
+		$data['land'] = $this->land->hbinden_select_landid_a();
+	    $index = $this->uri->segment(3);
+	    if($index != -1) {
+	        $data['hst_index'] = $index;
+	    } else{
+	        $data['hst_index'] = -1;
+	    }
+		$this->load->library("pagination");
+		$perpage = 20;
+		
+	    
+	//	$config['anchor_class'] = "page_page";
+		$config['base_url'] = site_url("hersteller/l_list_ida");
+		$config['total_rows'] = count($this->land->hbinden_select_landid_a());
+	//		p($config['total_rows']);
+	//		p(count($this->fahrzeug->bind_table_herstellername_a()));
+		$config['per_page'] = $perpage;
+		$config['uri_segment'] = 3;
+		
+		$this->pagination->initialize($config);
+		
+		$data["links"] = $this->pagination->create_links();
+	
+		$offset = $this->uri->segment(3);
+		$this->db->limit($perpage, $offset);
+		
+		$data['seite_all'] = floor($config['total_rows']/$perpage);
+	//	p($data['seite_all']);
+		$data['land'] = $this->land->hbinden_select_landid_a();
+	    $this->load->view("land/index",$data);
+	}
+	
+	public function l_list_idd() {
+		$data['fahrzeugfilter'] = $this->fahrzeug->f_all(); 
+		$data['herstellerfilter'] = $this->hst->h_select();
+		$data['land'] = $this->land->hbinden_select_landid_d();
+	    $index = $this->uri->segment(3);
+	    if($index != -1) {
+	        $data['hst_index'] = $index;
+	    } else{
+	        $data['hst_index'] = -1;
+	    }
+		$this->load->library("pagination");
+		$perpage = 20;
+		
+	    
+	//	$config['anchor_class'] = "page_page";
+		$config['base_url'] = site_url("hersteller/l_list_idd");
+		$config['total_rows'] = count($this->land->hbinden_select_landid_d());
+	//		p($config['total_rows']);
+	//		p(count($this->fahrzeug->bind_table_herstellername_a()));
+		$config['per_page'] = $perpage;
+		$config['uri_segment'] = 3;
+		
+		$this->pagination->initialize($config);
+		
+		$data["links"] = $this->pagination->create_links();
+	
+		$offset = $this->uri->segment(3);
+		$this->db->limit($perpage, $offset);
+		
+		$data['seite_all'] = floor($config['total_rows']/$perpage);
+	//	p($data['seite_all']);
+		$data['land'] = $this->land->hbinden_select_landid_d();
+	    $this->load->view("land/index",$data);
+	}
+	
+	public function h_list_landname_a() {
+		$data['fahrzeugfilter'] = $this->fahrzeug->f_all(); 
+		$data['herstellerfilter'] = $this->hst->h_select();
+		$data['land'] = $this->land->hbinden_select_landname_a();
+	    $index = $this->uri->segment(3);
+	    if($index != -1) {
+	        $data['hst_index'] = $index;
+	    } else{
+	        $data['hst_index'] = -1;
+	    }
+		$this->load->library("pagination");
+		$perpage = 20;
+		
+	    
+	//	$config['anchor_class'] = "page_page";
+		$config['base_url'] = site_url("hersteller/h_list_landname_a");
+		$config['total_rows'] = count($this->land->hbinden_select_landname_a());
+	//		p($config['total_rows']);
+	//		p(count($this->fahrzeug->bind_table_herstellername_a()));
+		$config['per_page'] = $perpage;
+		$config['uri_segment'] = 3;
+		
+		$this->pagination->initialize($config);
+		
+		$data["links"] = $this->pagination->create_links();
+	
+		$offset = $this->uri->segment(3);
+		$this->db->limit($perpage, $offset);
+		
+		$data['seite_all'] = floor($config['total_rows']/$perpage);
+	//	p($data['seite_all']);
+		$data['land'] = $this->land->hbinden_select_landname_a();
+	    $this->load->view("land/index",$data);
+	}
+	public function h_list_landname_d() {
+		$data['fahrzeugfilter'] = $this->fahrzeug->f_all(); 
+		$data['herstellerfilter'] = $this->hst->h_select();
+		$data['land'] = $this->land->hbinden_select_landname_d();
+	    $index = $this->uri->segment(3);
+	    if($index != -1) {
+	        $data['hst_index'] = $index;
+	    } else{
+	        $data['hst_index'] = -1;
+	    }
+		$this->load->library("pagination");
+		$perpage = 20;
+		
+	    
+	//	$config['anchor_class'] = "page_page";
+		$config['base_url'] = site_url("hersteller/h_list_landname_d");
+		$config['total_rows'] = count($this->land->hbinden_select_landname_d());
+	//		p($config['total_rows']);
+	//		p(count($this->fahrzeug->bind_table_herstellername_a()));
+		$config['per_page'] = $perpage;
+		$config['uri_segment'] = 3;
+		
+		$this->pagination->initialize($config);
+		
+		$data["links"] = $this->pagination->create_links();
+	
+		$offset = $this->uri->segment(3);
+		$this->db->limit($perpage, $offset);
+		
+		$data['seite_all'] = floor($config['total_rows']/$perpage);
+	//	p($data['seite_all']);
+		$data['land'] = $this->land->hbinden_select_landname_d();
+	    $this->load->view("land/index",$data);
+	}
 
     public function insert() {
 

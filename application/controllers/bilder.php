@@ -144,6 +144,28 @@ public function insert() {
 		$this->load->view("bilder/auswahlen",$data);
 		
 	}
+	public function bilderauswahlen($dirs = "/var/www/edit/quellen/Bilder"){
+		
+		$vor_bilder = $this->input->get("bilder");
+		$fz_id = $this->input->get("fz_id");
+		
+		
+		$_SESSION['bilder'] = "null";
+		$_SESSION['bilder_id'] = "null";
+		unset($_SESSION['bilder']);
+		unset($_SESSION['bilder_id']);
+		
+		
+//		p($_SESSION['item']);
+		
+//		p($this->session->get_userdata()['bilder']);
+		$data['url'] = $this->input->get("u");
+		$data['dirs'] = $dirs;
+		$tt = preg_split('/quellen\//',$dirs);
+		$data['page'] = $tt['1'];
+		$this->load->view("bilder/bilderauswahlen",$data);
+		
+	}
 
 	
 
@@ -266,22 +288,7 @@ public function insert() {
 		
 	}
 	 
-	public function link(){
-		
-		$link = $this->input->get("link");	
-		$u = $this->input->get("u");
-//		p($u);die;
-		$result = preg_split("/Bilder\//",$link);
-//		p(base_url($u));	
-//		p($result);die;
-		$_SESSION['bilder'] = $result[1];
-
-
-			echo "<script>
-				window.location.replace('".base_url('index.php/'.$u.'?bilder='.$_SESSION['bilder'])."');
-			</script>";
-
-	}
+	
 	
 	public function reset() {
 		$fz_id = $this->input->get("fz_id");
@@ -358,7 +365,22 @@ public function insert() {
 		$this->load->view("bilder/file_auswahlen",$data);
 	}
 	
-	
+	public function link(){
+		
+		$link = $this->input->get("link");	
+		$u = $this->input->get("u");
+//		p($u);die;
+		$result = preg_split("/Bilder\//",$link);
+//		p(base_url($u));	
+//		p($result);die;
+		$_SESSION['bilder'] = $result[1];
+
+
+			echo "<script>
+				window.location.replace('".base_url('index.php/'.$u.'?bilder='.$_SESSION['bilder']).'&quelle='.$_SESSION['bilder']."');
+			</script>";
+
+	}
 	public function file_link(){
 		
 		$link = $this->input->get("link");	

@@ -7,7 +7,22 @@ class Land_model extends CI_Model{
     public function l_select() {
         return $this->db->get("Land")->result_array();
     }
-
+	
+	
+	public function hbinden_select_landid_a() {
+		return $this->db->order_by("land_id",'asc')->get("Land")->result_array();
+	}
+	
+	public function hbinden_select_landid_d() {
+		return $this->db->order_by("land_id",'desc')->get("Land")->result_array();
+	}
+	
+	public function hbinden_select_landname_a() {
+		return $this->db->order_by("land",'asc')->get("Land")->result_array();		
+	}
+	public function hbinden_select_landname_d() {
+		return $this->db->order_by("land",'desc')->get("Land")->result_array();		
+	}
 
     public function m_select() {
         return $this->db->order_by("marktname")->get("Markt")->result_array();

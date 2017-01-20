@@ -26,14 +26,14 @@
 </form>
 
 <div id="search">
-<h1>Auto</h1>
+<h1>Fahrzeug</h1>
     <form class="form-inline" action="<?php echo site_url('fahrzeug/speicher') ?>" method="post"  enctype="multipart/form-data">
     <input type="hidden" name="eingabe" value="<?php echo date("Y-m-d"); ?>">
     <input type="hidden" name="aenderung" value="<?php echo date("Y-m-d"); ?>">
 <br>
         <div class="row text">
             <div class="col-xs-2">
-                <label for="fahrzeugname"><span class="tt">Fahrzeug Name</span></label>
+                <label for="fahrzeugname"><span class="tt">Name</span></label>
             </div>
             <div class="col-xs-7">
                 <input type="text" class="form-control " placeholder="fahrzeugname" list="fahrzeug" name="fahrzeugname" required id="fahrzeugname">
@@ -215,7 +215,7 @@
         <span></span>
     </div>
     <div class="col-xs-7">
-        <a href="<?php echo site_url('bilder/auswahlen?u='.$url); ?>">
+        <a href="<?php echo site_url('bilder/bilderauswahlen?u='.$url); ?>">
             <!-- <button type="btn">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
             </button> -->
@@ -397,7 +397,7 @@ $(function() {
 
         <div class="row quelle fas">
             <div class="col-xs-2">
-                <label><span>Fas</span></label>
+                <label><span>FAS</span></label>
             </div>
 
             <div class="col-xs-7">

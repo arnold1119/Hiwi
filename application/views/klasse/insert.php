@@ -38,13 +38,13 @@
 </datalist>
 
 <div id="search"  class="w80">
-	<h4>Add neue Klasse</h4>
+	<h4>Neue Fahrzeugklasse hinzufügen</h4>
 <br>
 <form action="<?php site_url('klasse/insert') ?>" method="post">
     <table class="table table-striped">
 <tr>
     <td> <h5><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></h5></td>
-    <td><h5>Zeigen Alle Klasse </h5></td>
+    <td><h5>Zeigen Alle Fahrzeugklasse </h5></td>
     <td>
         <a href="<?php echo site_url('klasse/index'); ?>">
                     <!-- <button type="btn">
@@ -59,10 +59,10 @@
 </tr>
         <tr class="">
             <td>    
-                <span><h4>Add neu klasse Name</h4></span>
+                <span><h4>Neue Fahrzeugklasse Name</h4></span>
             </td>
             <td>
-                <input type="text" name="klasse" placeholder="neue Klasse Name" autofocus required/>
+                <input type="text" name="klasse" placeholder="Neue Fahrzeugklasse Name" autofocus required/>
             </td>
             <td>
                 <input type="submit" value="add" class="btn btn-default"

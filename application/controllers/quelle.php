@@ -72,11 +72,16 @@ class Quelle extends CI_Controller{
 //          p(urldecode($this->input->get("quelle")));
             $t = pathinfo($this->input->get("quelle"));
 //          p($t);
-            if($t['extension']=='mp4') {
-            	$data['type'] = 1;
-            } else{
-            	$data['type'] = 0;
+            if($t['basename']!=null) {
+            	if($t['extension']=='mp4') {
+	            	$data['type'] = 1;
+	            } elseif($t['extension']=='png'||$t['extension']=='gif'||$t['extension']=='jpg'||$t['extension']=='jpeg'){
+	            	$data['type'] = 2;
+	            } else{
+	            	$data['type'] = 0;
+	            }
             }
+            
             	
 	        if($_SESSION['quellenname']) {
 				

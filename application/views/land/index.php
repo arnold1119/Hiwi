@@ -9,6 +9,7 @@
 	
 	<h4>Hersteller Land</h4>
 <br>
+<?php echo $links; ?>
 <table class="table table-striped">
 <tr  class="row text active">
     <td class="col-xs-3"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></td>
@@ -24,16 +25,35 @@
         </a>
     </td>
 </tr>
-
+<tr class="row text active">
+    <td> land_id
+    	<a href="<?php echo site_url('land/l_list_ida'); ?>">
+    		<span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
+    		
+    	</a>
+    	<a href="<?php echo site_url('land/l_list_idd'); ?>">
+    		
+    		<span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span>
+    	</a>
+    
+    </td>
+    <td>land
+    	<a href="<?php echo site_url('land/h_list_landname_a'); ?>">
+    		<span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
+    		
+    	</a>
+    	<a href="<?php echo site_url('land/h_list_landname_d'); ?>">
+    		
+    		<span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span>
+    	</a>
+    </td>
+    
+    
+    <td>&nbsp;</td>
+</tr>
 <?php foreach($land as $value): ?>
-    <?php if($value['land_id'] == $land_index): ?>
-    <tr  class="row text uccess"> 
-        <td class="col-xs-3">
-            <span><?php echo $value['land_id']; ?></span>
-            <span class="glyphicon glyphicon-saved" aria-hidden="true" style="color:green">
-            
-        </td>
-<?php elseif($value['land'] =="null"): ?>
+    
+<?php if($value['land'] =="null"): ?>
 
     <tr  class="row text danger"> 
         <td class="col-xs-3"><span><?php echo $value['land_id']; ?></span></td>
@@ -83,5 +103,6 @@
 		
 	}
 </script>
+<?php echo $links; ?>
 </body>
 </html>

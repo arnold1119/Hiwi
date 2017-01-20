@@ -53,12 +53,14 @@
 </h4>
 
 
-<p class="text-left" style="text-indent: 15px"><font style="margin-right: 15px;">Fahrzeugname:</font><?php echo $fahrzeug[0]["fahrzeugname"]; ?></p>
-<p class="text-left" style="text-indent: 15px"><font style="margin-right: 15px;">Klasse:</font><?php echo $fahrzeug[0]["klasse"]; ?></p>
-<p class="text-left" style="text-indent: 15px"><font style="margin-right: 15px;">Land:</font><?php echo $fahrzeug[0]["land"]; ?></p>
-<p class="text-left" style="text-indent: 15px"><font style="margin-right: 15px;">Herstellername:</font><?php echo $fahrzeug[0]["herstellername"]; ?></p>
-<p class="text-left" style="text-indent: 15px"><font style="margin-right: 15px;">Fahrzeug HerstellerLand Gruppe:</font><?php echo $fahrzeug[0]["gruppenname"]; ?></p>
+<p class="text-left" style="text-indent: 15px"><font style="margin-right: 15px;">Name:</font><?php echo $fahrzeug[0]["fahrzeugname"]; ?></p>
 <p class="text-left" style="text-indent: 15px"><font style="margin-right: 15px;">Baujahr:</font><?php echo $fahrzeug[0]["baujahr"]; ?></p>
+<p class="text-left" style="text-indent: 15px"><font style="margin-right: 15px;">Klasse:</font><?php echo $fahrzeug[0]["klasse"]; ?></p>
+<p class="text-left" style="text-indent: 15px"><font style="margin-right: 15px;">Herstellername:</font><?php echo $fahrzeug[0]["herstellername"]; ?></p>
+<p class="text-left" style="text-indent: 15px"><font style="margin-right: 15px;">Land:</font><?php echo $fahrzeug[0]["land"]; ?></p>
+
+<p class="text-left" style="text-indent: 15px"><font style="margin-right: 15px;">Fahrzeug HerstellerLand Gruppe:</font><?php echo $fahrzeug[0]["gruppenname"]; ?></p>
+
 
 <?php foreach($markt as $key=>$value): ?>
 <p class="text-left" style="text-indent: 15px"><font style="margin-right: 15px;">Marktland[<?php echo $key+1; ?>]:</font>
@@ -68,10 +70,11 @@
 <?php endforeach; ?>
 <?php foreach($quelle as $key=>$value): ?>
 	<!--<?php p($value['link']); ?>-->
-    <p class="text-left" style="text-indent: 15px">
-    	<font style="margin-right: 15px;">link[<?php echo $key+1 ?>]:</font>
-    	<a href='http://<?php echo $value['link']; ?>' target='_blank' class="quelle_color"><?php echo $value["link"]; ?></a> </p>
-    <p class="text-left quelle_color" style="text-indent: 15px"><font style="margin-right: 15px;">quellenname:</font><?php echo $value["quellenname"]; ?> <time datetime='<?php echo $result[0]["quellenname"]; ?>'>[ <?php echo $value["datum"]; ?> ]</time></p>
+   <!-- <p class="text-left" style="text-indent: 15px">-->
+    	
+    <p class="text-left quelle_color" style="text-indent: 15px"><font style="margin-right: 15px;">quellenname[<?php echo $key+1 ?>]:</font>
+    		<a href='http://<?php echo $value['link']; ?>' target='_blank' class="quelle_color"><?php echo $value["quellenname"]; ?> </a>
+    		<time datetime='<?php echo $result[0]["quellenname"]; ?>'>[ <?php echo $value["datum"]; ?> ]</time></p>
 <?php endforeach; ?>
 
 

@@ -26,7 +26,7 @@
 </form>
 
 <div id="search">
-<h1>Auto</h1>
+<h1>Fahrzeug</h1>
     <form class="form-inline" action="<?php echo site_url('fahrzeug/edit/'.$update['fahrzeug'][0]['fz_id']); ?>" method="post"  enctype="multipart/form-data">
     <!--<form class="form-inline" action="<?php echo site_url('fahrzeug/edit/'.$update['fahrzeug'][0]['fz_id']); ?>" method="post"  enctype="multipart/form-data">-->
     
@@ -35,7 +35,7 @@
 <br>
         <div class="row text">
             <div class="col-xs-2">
-                <label for="fahrzeugname"><span class="tt">Fahrzeug Name</span></label>
+                <label for="fahrzeugname"><span class="tt">Name</span></label>
             </div>
             <div class="col-xs-7">
                 <input type="text" class="form-control " value="<?php echo $update['fahrzeug'][0]['fahrzeugname'] ?>" list="fahrzeug" name="fahrzeugname" required id="fahrzeugname">
@@ -68,7 +68,7 @@
 <br />
         <div class="row text">
             <div class="col-xs-2">
-                <label for="baujahr"><span>Baujahr(z. B. 2016)</span></label>
+                <label for="baujahr"><span>Baujahr</span></label>
             </div>
             <div class="col-xs-7">
                 <input type="text" class="form-control" id="baujahr" value="<?php echo $update['fahrzeug'][0]['baujahr']; ?>" name="baujahr" required>
@@ -448,7 +448,7 @@ $(function() {
 
         <div class="row quelle fas">
             <div class="col-xs-2">
-                <label><span>Fas</span></label>
+                <label><span>FAS</span></label>
             </div>
 
             <div class="col-xs-7">
